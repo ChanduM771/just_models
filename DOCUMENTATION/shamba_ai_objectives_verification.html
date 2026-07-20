@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shamba AI &#8212; Objectives Verification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EE; --ink:#2B2B26; --muted:#6b6558;
+    --green:#3E6B4F; --clay:#B5651D; --blue:#2C5F7C; --violet:#6B4C7A;
+    --line:#e3dcc9;
+  }
+  *{box-sizing:border-box; font-family:'Outfit', Arial, sans-serif;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:'Outfit', Arial, sans-serif;
+    line-height:1.55;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:48px 24px 90px;}
+  header{border-bottom:3px solid var(--green); padding-bottom:22px; margin-bottom:36px;}
+  .eyebrow{font-family:Arial,Helvetica,sans-serif; letter-spacing:.12em; text-transform:uppercase; font-size:11.5px; color:var(--clay); font-weight:700;}
+  h1{font-size:30px; margin:8px 0 6px;}
+  .sub{font-family:Arial,Helvetica,sans-serif; color:var(--muted); font-size:14px;}
+  .overall{
+    display:flex; gap:18px; margin-top:22px; font-family:Arial,Helvetica,sans-serif;
+  }
+  .stat{flex:1; background:#fff; border:1px solid var(--line); border-radius:8px; padding:14px 16px;}
+  .stat b{display:block; font-size:22px; color:var(--green);}
+  .stat span{font-size:11.5px; color:var(--muted);}
+
+  section.objective{
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:26px 28px; margin-bottom:26px; position:relative;
+  }
+  .obj-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:16px;}
+  .obj-num{font-family:Arial,Helvetica,sans-serif; font-size:12px; color:var(--muted); letter-spacing:.08em;}
+  .obj-title{font-size:19px; margin:4px 0 0;}
+  .verdict{
+    font-family:Arial,Helvetica,sans-serif; font-size:11.5px; font-weight:700;
+    background:#eaf3ea; color:var(--green); border:1px solid var(--green);
+    padding:6px 12px; border-radius:20px; white-space:nowrap; height:fit-content;
+  }
+  h3.evh{font-family:Arial,Helvetica,sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--violet); margin:20px 0 8px;}
+  ul.ev{margin:0 0 6px; padding-left:20px; font-size:15px;}
+  ul.ev li{margin-bottom:7px;}
+  .src{font-family:'Courier New',monospace; font-size:12.5px; background:#f4efe2; padding:1px 6px; border-radius:4px; color:#5a4b2f;}
+  .docx{font-style:italic; color:var(--muted);}
+  .diagram-box{border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:6px;}
+  .caveat{
+    margin-top:16px; padding:12px 14px; background:#fdf6ea; border-left:3px solid var(--clay);
+    font-size:13.5px; font-family:Arial,Helvetica,sans-serif; color:#5a4b2f;
+  }
+  footer{margin-top:10px; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:var(--muted); text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Kabarak University &#183; BSc Information Technology &#183; Research Project</div>
+    <h1>Shamba AI &#8212; Specific Objectives Verification</h1>
+    <div class="sub">Cross-checked against the submitted codebase (<span class="src">crop-disease-app/</span>) and <span class="src">Kabarak_Complete_Research_Project_NOT_FINAL.docx</span></div>
+    <div class="overall">
+      <div class="stat"><b>3 / 3</b><span>objectives with direct evidence</span></div>
+      <div class="stat"><b>Ch. 3 &amp; 4</b><span>where implementation evidence lives</span></div>
+      <div class="stat"><b>1</b><span>caveat &#8212; see objective iii</span></div>
+    </div>
+  </header>
+
+  <!-- OBJECTIVE I -->
+  <section class="objective">
+    <div class="obj-head">
+      <div>
+        <div class="obj-num">OBJECTIVE I</div>
+        <p class="obj-title">Design a system architecture for image processing and crop disease detection.</p>
+      </div>
+      <div class="verdict">&#10003; MET</div>
+    </div>
+
+    <h3 class="evh">Evidence in the document</h3>
+    <ul class="ev">
+      <li>Section 2.1 argues for a three-tier architecture (presentation / application logic / data) and reviews client-side vs. server-side image processing trade-offs for low-resource users.</li>
+      <li>Section 4.2 ("System Architecture") states the implemented system followed exactly this three-tier split, naming FastAPI's static file middleware, the FastAPI REST layer, and SQLite in WAL mode as the three tiers.</li>
+      <li>Figure 4.1 is captioned as the system architecture diagram showing frontend &#8594; FastAPI backend &#8594; smart pipeline (ONNX/Gemini) &#8594; SQLite.</li>
+    </ul>
+
+    <h3 class="evh">Evidence in the codebase</h3>
+    <ul class="ev">
+      <li><span class="src">backend/app.py</span> mounts the frontend via <span class="src">StaticFiles</span> and wires five routers (<span class="src">auth</span>, <span class="src">detect</span>, <span class="src">admin</span>, <span class="src">history</span>, <span class="src">chat</span>) &#8212; the application logic tier.</li>
+      <li><span class="src">backend/db/database.py</span> opens SQLite with <span class="src">PRAGMA journal_mode=WAL</span> and <span class="src">foreign_keys=ON</span>, matching the data-tier design described in the text.</li>
+      <li><span class="src">backend/ai/predict.py</span> implements the image-processing pipeline referenced in the objective: pre-processing (<span class="src">image_utils.py</span>) &#8594; Gemini Vision call &#8594; ONNX fallback &#8594; advice lookup.</li>
+    </ul>
+
+    <h3 class="evh">Rendered architecture diagram (matches the code, not just the write-up)</h3>
+    <div class="diagram-box">
+      <object type="image/svg+xml" data="shamba_ai_architecture.svg" style="width:100%; display:block;"></object>
+    </div>
+    <div class="caveat">
+      Note: the code's actual prediction order is <b>Gemini Vision first, ONNX as the fallback</b> (see <span class="src">predict.py</span>'s own docstring and the priority comments). The bracketed placeholder text next to Figure 4.1 in the draft ("ONNX &#8594; Gemini API") has the order reversed from both the code and from the descriptive paragraph right above it (para. 218) &#8212; worth fixing before submission so the figure caption and body text agree.
+    </div>
+  </section>
+
+  <!-- OBJECTIVE II -->
+  <section class="objective">
+    <div class="obj-head">
+      <div>
+        <div class="obj-num">OBJECTIVE II</div>
+        <p class="obj-title">Implement a web-based crop disease detection system using AI-powered image analysis.</p>
+      </div>
+      <div class="verdict">&#10003; MET</div>
+    </div>
+
+    <h3 class="evh">Evidence in the document</h3>
+    <ul class="ev">
+      <li>Chapter Four describes iterative (Agile) implementation of the front end, back end, database, and AI module, and states all three objectives were achieved using the Gemini Vision API.</li>
+      <li>Section 4.6 documents the FastAPI + SQLite back end, and 4.6.2&#8211;4.6.3 give the actual table schemas and testing levels used.</li>
+    </ul>
+
+    <h3 class="evh">Evidence in the codebase</h3>
+    <ul class="ev">
+      <li><span class="src">POST /api/detect</span> (<span class="src">routes/detect.py</span>) is a real, working endpoint: it validates the upload, runs <span class="src">predict_disease()</span>, looks up advice, stores the record, and returns disease name, confidence, severity, symptoms, treatment steps, products and prevention &#8212; a genuinely web-based, end-to-end system rather than a mock-up.</li>
+      <li><span class="src">gemini_vision.py</span> sends the image plus a structured pathologist-style prompt to <span class="src">gemini-3.1-flash-lite</span> and parses a strict JSON response &#8212; this is the "AI-powered image analysis" the objective calls for, not a hard-coded label list.</li>
+      <li>A genuine offline fallback exists: <span class="src">model.py</span> runs a local ONNX MobileNetV2 session when Gemini is unavailable or low-confidence, so the system degrades gracefully rather than failing outright.</li>
+      <li>Supporting features beyond the bare objective are also implemented: JWT auth (<span class="src">auth_utils.py</span>), scan history (<span class="src">history.py</span>), an admin dashboard (<span class="src">admin.py</span>), and a post-diagnosis chat endpoint (<span class="src">chat.py</span>).</li>
+    </ul>
+  </section>
+
+  <!-- OBJECTIVE III -->
+  <section class="objective">
+    <div class="obj-head">
+      <div>
+        <div class="obj-num">OBJECTIVE III</div>
+        <p class="obj-title">Evaluate the performance and usability of the crop disease detection system.</p>
+      </div>
+      <div class="verdict">&#10003; PARTIALLY MET</div>
+    </div>
+
+    <h3 class="evh">Evidence in the document</h3>
+    <ul class="ev">
+      <li>Section 4.6.3 reports unit, integration, and end-to-end testing, and states the Gemini Vision API was tested on 25 sample images across five crops against expert-identified ground truth.</li>
+      <li>Appendix C gives concrete numbers: 100% correct identification across the 25 test images, an average confidence of 80.2%, with potato/tomato scoring highest (83.6% / 83.0%) and kale/onion lowest (76.8% / 77.8%).</li>
+      <li>Section 4.5 discusses usability-oriented design decisions &#8212; a minimal-step scan flow and a mobile-first, vertically-stacking layout aimed at farmers with limited tech experience.</li>
+    </ul>
+
+    <h3 class="evh">Evidence in the codebase</h3>
+    <ul class="ev">
+      <li>The confidence-threshold logic in <span class="src">predict.py</span> (accept Gemini only above 20%, ONNX only above 40%) is itself a built-in performance gate, consistent with the accuracy figures reported in Appendix C.</li>
+      <li><span class="src">GET /api/health</span> in <span class="src">app.py</span> exposes live status of the ONNX model, the Gemini key, and the database &#8212; a small but real operational-performance check.</li>
+    </ul>
+
+    <div class="caveat">
+      <b>Gap:</b> Section 2.3 of the literature review sets up the System Usability Scale (SUS) as the intended usability instrument, but this draft does not yet contain a corresponding results section with actual SUS scores or participant/user-testing numbers &#8212; the quantitative evidence currently on hand is technical accuracy/confidence testing (Appendix C), not a formal usability study. If a usability survey was run, its results should be added as a proper section (e.g. Chapter Five) before final submission; if it wasn't, that's the one piece of Objective III still to close out.
+    </div>
+  </section>
+
+  <footer>Generated from the uploaded project files &#8212; re-check after any further edits to the docx or codebase.</footer>
+</div>
+</body>
+</html>

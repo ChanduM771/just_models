@@ -1,0 +1,164 @@
+<svg viewBox="0 0 1200 920" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3a3a32"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2c5f7c"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="920" fill="#FAF6EE"/>
+
+  <text x="600" y="38" text-anchor="middle" font-size="24" font-weight="bold" fill="#2B2B26">Shamba AI &#8212; System Architecture</text>
+  <text x="600" y="60" text-anchor="middle" font-size="13" fill="#6b6558" font-style="italic">Three-tier architecture with a smart image-processing &amp; disease-detection pipeline</text>
+
+  <!-- TIER 1: PRESENTATION -->
+  <rect x="50" y="85" width="1100" height="150" rx="10" fill="#EAF3EA" stroke="#3E6B4F" stroke-width="2"/>
+  <rect x="50" y="85" width="1100" height="30" rx="10" fill="#3E6B4F"/>
+  <rect x="50" y="100" width="1100" height="15" fill="#3E6B4F"/>
+  <text x="65" y="106" font-size="14" font-weight="bold" fill="#fff">PRESENTATION TIER &#8212; Client Browser (static HTML / CSS / JS, served via FastAPI StaticFiles)</text>
+
+  <g font-size="12" fill="#2B2B26">
+    <rect x="75" y="130" width="180" height="80" rx="6" fill="#fff" stroke="#3E6B4F"/>
+    <text x="165" y="150" text-anchor="middle" font-weight="bold">index.html</text>
+    <text x="165" y="168" text-anchor="middle" fill="#5a5a50">Scan page &#8212; crop</text>
+    <text x="165" y="182" text-anchor="middle" fill="#5a5a50">selector + image upload</text>
+
+    <rect x="280" y="130" width="180" height="80" rx="6" fill="#fff" stroke="#3E6B4F"/>
+    <text x="370" y="150" text-anchor="middle" font-weight="bold">result.html</text>
+    <text x="370" y="168" text-anchor="middle" fill="#5a5a50">Diagnosis, advice &amp;</text>
+    <text x="370" y="182" text-anchor="middle" fill="#5a5a50">farmer chat (Gemini)</text>
+
+    <rect x="485" y="130" width="180" height="80" rx="6" fill="#fff" stroke="#3E6B4F"/>
+    <text x="575" y="150" text-anchor="middle" font-weight="bold">login.html</text>
+    <text x="575" y="168" text-anchor="middle" fill="#5a5a50">Register / login</text>
+    <text x="575" y="182" text-anchor="middle" fill="#5a5a50">(optional account)</text>
+
+    <rect x="690" y="130" width="180" height="80" rx="6" fill="#fff" stroke="#3E6B4F"/>
+    <text x="780" y="150" text-anchor="middle" font-weight="bold">history.html</text>
+    <text x="780" y="168" text-anchor="middle" fill="#5a5a50">Past scans for the</text>
+    <text x="780" y="182" text-anchor="middle" fill="#5a5a50">logged-in farmer</text>
+
+    <rect x="895" y="130" width="180" height="80" rx="6" fill="#fff" stroke="#3E6B4F"/>
+    <text x="985" y="150" text-anchor="middle" font-weight="bold">admin_dashboard.html</text>
+    <text x="985" y="168" text-anchor="middle" fill="#5a5a50">Stats, users &amp;</text>
+    <text x="985" y="182" text-anchor="middle" fill="#5a5a50">disease management</text>
+  </g>
+
+  <line x1="600" y1="235" x2="600" y2="270" stroke="#3a3a32" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="615" y="256" font-size="11" fill="#5a5a50">HTTPS &#8212; fetch() / multipart form-data</text>
+
+  <!-- TIER 2: APPLICATION LOGIC -->
+  <rect x="50" y="272" width="1100" height="185" rx="10" fill="#FCF1DE" stroke="#B5651D" stroke-width="2"/>
+  <rect x="50" y="272" width="1100" height="30" fill="#B5651D"/>
+  <text x="65" y="292" font-size="14" font-weight="bold" fill="#fff">APPLICATION LOGIC TIER &#8212; FastAPI Backend (app.py)</text>
+
+  <g font-size="12" fill="#2B2B26">
+    <rect x="75" y="315" width="150" height="55" rx="6" fill="#fff" stroke="#B5651D"/>
+    <text x="150" y="335" text-anchor="middle" font-weight="bold">auth.py</text>
+    <text x="150" y="352" text-anchor="middle" fill="#5a5a50" font-size="10.5">register / login / JWT</text>
+
+    <rect x="240" y="315" width="150" height="55" rx="6" fill="#fff" stroke="#B5651D"/>
+    <text x="315" y="335" text-anchor="middle" font-weight="bold">detect.py</text>
+    <text x="315" y="352" text-anchor="middle" fill="#5a5a50" font-size="10.5">POST /api/detect</text>
+
+    <rect x="405" y="315" width="150" height="55" rx="6" fill="#fff" stroke="#B5651D"/>
+    <text x="480" y="335" text-anchor="middle" font-weight="bold">history.py</text>
+    <text x="480" y="352" text-anchor="middle" fill="#5a5a50" font-size="10.5">GET /api/history</text>
+
+    <rect x="570" y="315" width="150" height="55" rx="6" fill="#fff" stroke="#B5651D"/>
+    <text x="645" y="335" text-anchor="middle" font-weight="bold">chat.py</text>
+    <text x="645" y="352" text-anchor="middle" fill="#5a5a50" font-size="10.5">follow-up Q&amp;A</text>
+
+    <rect x="735" y="315" width="150" height="55" rx="6" fill="#fff" stroke="#B5651D"/>
+    <text x="810" y="335" text-anchor="middle" font-weight="bold">admin.py</text>
+    <text x="810" y="352" text-anchor="middle" fill="#5a5a50" font-size="10.5">dashboard endpoints</text>
+
+    <rect x="900" y="315" width="225" height="55" rx="6" fill="#fdf7ec" stroke="#B5651D" stroke-dasharray="4 2"/>
+    <text x="1012" y="332" text-anchor="middle" font-weight="bold" font-size="11">utils/</text>
+    <text x="1012" y="347" text-anchor="middle" fill="#5a5a50" font-size="10">auth_utils.py (JWT) &#183; image_utils.py</text>
+    <text x="1012" y="360" text-anchor="middle" fill="#5a5a50" font-size="10">(validate / resize / base64)</text>
+  </g>
+  <text x="75" y="440" font-size="10.5" fill="#5a5a50">lifespan startup (init_db, seed_demo_data) StaticFiles mount at /static</text>
+
+  <line x1="315" y1="370" x2="315" y2="480" stroke="#3a3a32" stroke-width="2" marker-end="url(#arrow)"/>
+  
+
+  <!-- AI PIPELINE -->
+  <rect x="50" y="482" width="740" height="230" rx="10" fill="#EAF2FB" stroke="#2C5F7C" stroke-width="2"/>
+  <rect x="50" y="482" width="740" height="30" fill="#2C5F7C"/>
+  <text x="65" y="502" font-size="14" font-weight="bold" fill="#fff">SMART PREDICTION PIPELINE &#8212; ai/predict.py</text>
+
+  <rect x="75" y="525" width="330" height="65" rx="6" fill="#fff" stroke="#2C5F7C"/>
+  <text x="240" y="545" text-anchor="middle" font-weight="bold" font-size="12">1. Gemini Vision API (primary)</text>
+  <text x="240" y="562" text-anchor="middle" fill="#5a5a50" font-size="10.5">gemini_vision.py &#8212; open-ended diagnosis</text>
+  <text x="240" y="576" text-anchor="middle" fill="#5a5a50" font-size="10.5">accepted if confidence &gt; 20%</text>
+
+  <rect x="425" y="525" width="330" height="65" rx="6" fill="#fff" stroke="#2C5F7C"/>
+  <text x="590" y="545" text-anchor="middle" font-weight="bold" font-size="12">2. Local ONNX Model (fallback)</text>
+  <text x="590" y="562" text-anchor="middle" fill="#5a5a50" font-size="10.5">model.py &#8212; MobileNetV2, PlantVillage labels</text>
+  <text x="590" y="576" text-anchor="middle" fill="#5a5a50" font-size="10.5">accepted if confidence &gt; 40%</text>
+
+  <rect x="75" y="605" width="330" height="45" rx="6" fill="#fff" stroke="#2C5F7C" stroke-dasharray="4 2"/>
+  <text x="240" y="632" text-anchor="middle" font-size="11" fill="#2B2B26">3. Fallback &#8212; "Unknown" result if both fail</text>
+
+  <rect x="425" y="605" width="330" height="45" rx="6" fill="#fff" stroke="#2C5F7C"/>
+  <text x="590" y="626" text-anchor="middle" font-weight="bold" font-size="12">advice.py</text>
+  <text x="590" y="641" text-anchor="middle" fill="#5a5a50" font-size="10.5">looks up symptoms / treatment / products</text>
+
+  <line x1="240" y1="590" x2="240" y2="605" stroke="#2c5f7c" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <line x1="405" y1="557" x2="425" y2="557" stroke="#2c5f7c" stroke-width="1.5" stroke-dasharray="3 2" marker-end="url(#arrowBlue)"/>
+  <text x="410" y="550" font-size="9.5" fill="#2c5f7c">if rejected</text>
+
+  <!-- external Gemini cloud -->
+  <g>
+    <ellipse cx="960" cy="530" rx="105" ry="42" fill="#DCEBF5" stroke="#2C5F7C" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text x="960" y="524" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4a63">Google Gemini API</text>
+    <text x="960" y="540" text-anchor="middle" font-size="10" fill="#1d4a63">gemini-3.1-flash-lite</text>
+    <text x="960" y="554" text-anchor="middle" font-size="9.5" fill="#4a4a44">(external cloud service)</text>
+  </g>
+  <line x1="855" y1="545" x2="905" y2="537" stroke="#2c5f7c" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#arrowBlue)"/>
+  <text x="835" y="600" font-size="10" fill="#5a5a50" width="140">base64 image + structured prompt &#8594;&#8594; JSON diagnosis</text>
+
+  <!-- side note box -->
+  <rect x="810" y="580" width="290" height="115" rx="8" fill="#fdf7ec" stroke="#B5651D" stroke-dasharray="3 2"/>
+  <text x="825" y="600" font-size="10.5" font-weight="bold" fill="#2B2B26">Image pre-processing</text>
+  <text x="825" y="617" font-size="10" fill="#5a5a50">image_utils.py validates format /</text>
+  <text x="825" y="631" font-size="10" fill="#5a5a50">size (&#8804;5MB) and resizes to 224&#215;224</text>
+  <text x="825" y="645" font-size="10" fill="#5a5a50">before it reaches either prediction</text>
+  <text x="825" y="659" font-size="10" fill="#5a5a50">path &#8212; keeps bandwidth and API</text>
+  <text x="825" y="673" font-size="10" fill="#5a5a50">payload size down.</text>
+
+  <line x1="480" y1="712" x2="480" y2="745" stroke="#3a3a32" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="495" y="732" font-size="11" fill="#5a5a50">INSERT detection record</text>
+
+  <!-- TIER 3: DATA -->
+  <rect x="50" y="747" width="1100" height="115" rx="10" fill="#F2E9F6" stroke="#6B4C7A" stroke-width="2"/>
+  <rect x="50" y="747" width="1100" height="30" fill="#6B4C7A"/>
+  <text x="65" y="767" font-size="14" font-weight="bold" fill="#fff">DATA TIER &#8212; SQLite (WAL mode, foreign keys on)</text>
+
+  <g font-size="11.5" fill="#2B2B26">
+    <rect x="75" y="790" width="240" height="55" rx="6" fill="#fff" stroke="#6B4C7A"/>
+    <text x="195" y="810" text-anchor="middle" font-weight="bold">users</text>
+    <text x="195" y="826" text-anchor="middle" fill="#5a5a50" font-size="10">name, email/phone, county,</text>
+    <text x="195" y="838" text-anchor="middle" fill="#5a5a50" font-size="10">password_hash, is_admin</text>
+
+    <rect x="335" y="790" width="240" height="55" rx="6" fill="#fff" stroke="#6B4C7A"/>
+    <text x="455" y="810" text-anchor="middle" font-weight="bold">diseases</text>
+    <text x="455" y="826" text-anchor="middle" fill="#5a5a50" font-size="10">crop, severity, symptoms,</text>
+    <text x="455" y="838" text-anchor="middle" fill="#5a5a50" font-size="10">treatment_steps, products</text>
+
+    <rect x="595" y="790" width="240" height="55" rx="6" fill="#fff" stroke="#6B4C7A"/>
+    <text x="715" y="810" text-anchor="middle" font-weight="bold">detections</text>
+    <text x="715" y="826" text-anchor="middle" fill="#5a5a50" font-size="10">user_id, image_path, crop_type,</text>
+    <text x="715" y="838" text-anchor="middle" fill="#5a5a50" font-size="10">disease_name, confidence, severity</text>
+
+    <rect x="855" y="790" width="240" height="55" rx="6" fill="#fff" stroke="#6B4C7A"/>
+    <text x="975" y="810" text-anchor="middle" font-weight="bold">chat_messages</text>
+    <text x="975" y="826" text-anchor="middle" fill="#5a5a50" font-size="10">follow-up farmer Q&amp;A tied to</text>
+    <text x="975" y="838" text-anchor="middle" fill="#5a5a50" font-size="10">a detection, preview_urls</text>
+  </g>
+
+  <text x="600" y="900" text-anchor="middle" font-size="10.5" fill="#8a8578">Response path: advice + prediction &#8594; JSON &#8594; FastAPI &#8594; browser renders result.html</text>
+</svg>
