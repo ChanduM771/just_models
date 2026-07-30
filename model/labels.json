@@ -1,0 +1,18 @@
+[
+  {"name": "Tomato_Early_blight", "display": "Tomato Early Blight", "crop": "Tomato", "emoji": "🍅"},
+  {"name": "Tomato_Late_blight", "display": "Tomato Late Blight", "crop": "Tomato", "emoji": "🍅"},
+  {"name": "Tomato_Bacterial_spot", "display": "Tomato Bacterial Spot", "crop": "Tomato", "emoji": "🍅"},
+  {"name": "Tomato_Yellow_Leaf_Curl_Virus", "display": "Tomato Yellow Leaf Curl Virus", "crop": "Tomato", "emoji": "🍅"},
+  {"name": "Tomato_healthy", "display": "Healthy Tomato", "crop": "Tomato", "emoji": "🍅"},
+  {"name": "Corn_(maize)_Gray_leaf_spot", "display": "Maize Gray Leaf Spot", "crop": "Maize", "emoji": "🌽"},
+  {"name": "Corn_(maize)_Northern_Leaf_Blight", "display": "Maize Northern Leaf Blight", "crop": "Maize", "emoji": "🌽"},
+  {"name": "Maize_Lethal_Necrosis", "display": "Maize Lethal Necrosis Disease", "crop": "Maize", "emoji": "🌽"},
+  {"name": "Maize_Rust", "display": "Maize Common Rust", "crop": "Maize", "emoji": "🌽"},
+  {"name": "Fall_Armyworm", "display": "Fall Armyworm", "crop": "Maize", "emoji": "🌽"},
+  {"name": "Kale_Black_Rot", "display": "Kale Black Rot", "crop": "Kale", "emoji": "🥬"},
+  {"name": "Kale_Downy_Mildew", "display": "Kale Downy Mildew", "crop": "Kale", "emoji": "🥬"},
+  {"name": "Kale_Aphids", "display": "Kale Aphid Infestation", "crop": "Kale", "emoji": "🥬"},
+  {"name": "Kale_Cabbage_Worm", "display": "Kale Cabbage Worm", "crop": "Kale", "emoji": "🥬"},
+  {"name": "Potato_Late_blight", "display": "Potato Late Blight", "crop": "Potato", "emoji": "🥔"},
+  {"name": "Onion_Purple_Blotch", "display": "Onion Purple Blotch", "crop": "Onion", "emoji": "🧅"}
+]

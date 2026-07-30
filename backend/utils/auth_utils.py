@@ -1,0 +1,85 @@
+"""
+Shamba AI - Authentication Utilities
+PBKDF2 password hashing, JWT creation/verification
+"""
+import hashlib
+import os
+import hmac
+from datetime import datetime, timedelta
+from typing import Optional
+
+import jwt
+
+from config import JWT_SECRET, JWT_ALGORITHM, JWT_EXPIRY_HOURS
+
+
+def hash_password(password: str) -> str:
+    """
+    Hash a password using PBKDF2 with a random salt.
+    Returns format: salt:hash (both hex-encoded)
+    """
+    salt = os.urandom(16)
+    hash_bytes = hashlib.pbkdf2_hmac(
+        "sha256",
+        password.encode("utf-8"),
+        salt,
+        100000  # iterations
+    )
+    return f"{salt.hex()}:{hash_bytes.hex()}"
+
+
+def verify_password(password: str, stored_hash: str) -> bool:
+    """
+    Verify a password against a stored PBKDF2 hash.
+    """
+    try:
+        salt_hex, hash_hex = stored_hash.split(":")
+        salt = bytes.fromhex(salt_hex)
+        computed_hash = hashlib.pbkdf2_hmac(
+            "sha256",
+            password.encode("utf-8"),
+            salt,
+            100000
+        )
+        return hmac.compare_digest(computed_hash.hex(), hash_hex)
+    except (ValueError, AttributeError):
+        return False
+
+
+def create_jwt(user_id: int, is_admin: bool = False) -> str:
+    """
+    Create a JWT token for the given user.
+    """
+    payload = {
+        "user_id": user_id,
+        "is_admin": is_admin,
+        "exp": datetime.utcnow() + timedelta(hours=JWT_EXPIRY_HOURS),
+        "iat": datetime.utcnow(),
+    }
+    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
+
+
+def verify_jwt(token: str) -> Optional[dict]:
+    """
+    Verify and decode a JWT token.
+    Returns the payload dict if valid, None if invalid/expired.
+    """
+    try:
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        return payload
+    except jwt.ExpiredSignatureError:
+        return None
+    except jwt.InvalidTokenError:
+        return None
+
+
+def extract_token_from_header(authorization: str) -> Optional[str]:
+    """
+    Extract Bearer token from Authorization header.
+    """
+    if not authorization:
+        return None
+    parts = authorization.split(" ")
+    if len(parts) == 2 and parts[0].lower() == "bearer":
+        return parts[1]
+    return None
