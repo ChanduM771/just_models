@@ -1,0 +1,19 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+
+# stale duplicate archive — same source, no reason to track
+backend.zip
+
+# runtime data — real user rows (names, emails, phone, password hashes)
+backend/shamba.db
+
+# user-uploaded detection photos — runtime data, not source
+uploads/*
+!uploads/.gitkeep
