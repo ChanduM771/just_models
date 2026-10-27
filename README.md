@@ -1,8 +1,8 @@
-# 🌿 Shamba AI — Crop Disease Detection
+# 🌿 AgroVision AI — Crop Disease Detection
 
 > **Detect crop diseases instantly. Save your harvest. Save your income.**
 
-Shamba AI is a full-stack AI-powered crop disease detection platform built for Kenyan smallholder farmers. Point your phone at a sick leaf, get a diagnosis in seconds — treatment steps, product recommendations, and prevention tips included. Works on 2G/3G. No login required.
+AgroVision AI is a full-stack AI-powered crop disease detection platform built for Kenyan smallholder farmers. Point your phone at a sick leaf, get a diagnosis in seconds — treatment steps, product recommendations, and prevention tips included. Works on 2G/3G. No login required.
 
 ---
 
@@ -55,10 +55,10 @@ Shamba AI is a full-stack AI-powered crop disease detection platform built for K
 | Feature | Details |
 |---|---|
 | 🔍 **Instant AI Diagnosis** | Upload a leaf photo → disease name, confidence score & severity in seconds |
-| 🧠 **Dual Inference Engine** | Local ONNX (MobileNetV2, PlantVillage) with Gemini Vision API fallback |
+| 🧠 **Dual Inference Engine** | Crop-specific local Keras models with optional Gemini Vision fallback |
 | 💬 **AI Chat Assistant** | Ask follow-up questions about your diagnosis in context |
 | 📄 **PDF Report Export** | Save and share your diagnosis report |
-| 🌍 **Bilingual — EN / SW** | Full English & Swahili UI, switchable mid-session |
+| 🌍 **Bilingual — EN / KN** | English app interface with Kannada diagnosis and AI chat support |
 | 🌙 **Dark Mode** | Deep black-green theme, preference persisted |
 | 📱 **Mobile-First** | Optimised for low-end Android devices on 2G/3G |
 | 🚫 **No Login Required** | Anonymous scanning — account optional for scan history |
@@ -71,12 +71,10 @@ Shamba AI is a full-stack AI-powered crop disease detection platform built for K
 
 | Crop | Diseases Detected |
 |---|---|
-| 🌽 **Maize** | Lethal Necrosis (MLND), Gray Leaf Spot, Rust, Fall Armyworm |
+| 🌽 **Corn** | Crop-specific Corn model and class mapping |
 | 🍅 **Tomato** | Early Blight, Late Blight, Bacterial Spot, Yellow Leaf Curl Virus |
-| 🥬 **Kale (Sukuma Wiki)** | Black Rot, Downy Mildew, Aphids, Cabbage Worm |
-| 🥔 **Potato** | Late Blight |
-| 🧅 **Onion** | Purple Blotch |
-| 🫘 **Beans** | Gemini Vision open-ended diagnosis |
+| 🥔 **Potato** | Crop-specific Potato model and class mapping |
+| 🍎 **Apple** | Crop-specific Apple model and class mapping |
 
 > The Gemini Vision fallback can diagnose **any** visible disease, disorder, or pest damage — including physiological disorders (nutrient deficiency, sunscald, blossom end rot) not in the local model.
 
@@ -85,7 +83,7 @@ Shamba AI is a full-stack AI-powered crop disease detection platform built for K
 ## 🏗️ Architecture
 
 ```
-shamba-ai/
+agrovision-ai/
 ├── frontend/
 │   ├── index.html              ← Scan page (EN/SW, dark mode, crop picker, upload)
 │   ├── result.html             ← Diagnosis result card + AI chat panel
@@ -163,14 +161,14 @@ result     │  Gemini Vision   │  ← Open-ended diagnosis, any disease
 
 - Python 3.9+
 - `pip`
-- Gemini API key (for fallback + chat)
+- Gemini API key (optional for fallback, explanation, translation, and chat)
 
 ### Installation
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/yourname/shamba-ai.git
-cd shamba-ai
+git clone https://github.com/yourname/agrovision-ai.git
+cd agrovision-ai
 
 # 2. Install Python dependencies
 pip install -r requirements.txt
@@ -178,6 +176,8 @@ pip install -r requirements.txt
 # 3. Set environment variables (or edit config.py)
 export GEMINI_API_KEY="your-gemini-api-key"
 export JWT_SECRET="your-secret-key"
+export ADMIN_EMAIL="admin@shamba.ai"
+export ADMIN_PASSWORD="change-this-password"
 
 # 4. Start the server
 cd backend
@@ -188,14 +188,13 @@ uvicorn app:app --reload --host 0.0.0.0 --port 8001
 
 App runs at **http://localhost:8001**
 
-### Default Admin Credentials
+### Admin Credentials
 
 ```
-Email:    admin@shamba.ai
-Password: admin123
+Email and password are read from `ADMIN_EMAIL` and `ADMIN_PASSWORD` when the database is first initialized.
 ```
 
-> ⚠️ Change these before deploying to production.
+> Set a strong `ADMIN_PASSWORD` before deploying to production. Existing databases are not overwritten.
 
 ---
 
@@ -318,5 +317,5 @@ MIT License — free for agricultural, educational, and commercial use.
 
 ---
 
-*🌿 Shamba AI — Kuwawezesha wakulima wa Kenya kwa AI*  
+*🌿 AgroVision AI — Kuwawezesha wakulima wa Kenya kwa AI*
 *Empowering Kenyan farmers with artificial intelligence*
