@@ -4,28 +4,28 @@
     "crop": "Tomato",
     "severity": "High",
     "symptoms": [
-      "Dark brown to black spots with concentric rings (bullseye pattern) on lower leaves",
-      "Yellow halos around spots",
-      "Leaves turn yellow and drop from bottom up",
+      "Dark brown to black spots with concentric rings on lower leaves",
+      "Yellow halos around lesions",
+      "Lower leaves turn yellow and drop",
       "Stem lesions may appear as dark collar-like spots"
     ],
     "treatment_steps": [
-      {"step": 1, "text": "Apply copper oxychloride or mancozeb (Dithane M45) immediately"},
+      {"step": 1, "text": "Apply copper oxychloride or mancozeb at the first sign of infection"},
       {"step": 2, "text": "Remove and destroy infected lower leaves to reduce spore spread"},
-      {"step": 3, "text": "Ensure proper plant spacing for air circulation"},
-      {"step": 4, "text": "Avoid overhead irrigation — water at the base of plants"}
+      {"step": 3, "text": "Ensure good spacing and airflow between plants"},
+      {"step": 4, "text": "Avoid overhead irrigation and water at the base of plants"}
     ],
     "products": [
-      {"name": "Dithane M45 (Mancozeb)", "type": "Fungicide", "availability": "Local agrovet"},
+      {"name": "Mancozeb (Dithane M45)", "type": "Fungicide", "availability": "Local agrovet"},
       {"name": "Copper Oxychloride", "type": "Fungicide", "availability": "Local agrovet"},
       {"name": "Ridomil Gold", "type": "Systemic Fungicide", "availability": "Certified agrovet"}
     ],
     "prevention": [
-      "Practice 3-year crop rotation with non-solanaceous crops",
-      "Ensure proper plant spacing for air circulation",
-      "Avoid overhead irrigation",
+      "Practice crop rotation with non-solanaceous crops",
       "Use certified disease-free seedlings",
-      "Apply preventive fungicide sprays during wet season"
+      "Maintain good plant spacing and airflow",
+      "Avoid overhead irrigation",
+      "Apply preventive fungicide sprays in wet weather"
     ]
   },
   "Tomato_Late_blight": {
@@ -33,27 +33,27 @@
     "crop": "Tomato",
     "severity": "Critical",
     "symptoms": [
-      "Water-soaked lesions on leaves that expand rapidly",
-      "White fuzzy growth on leaf undersides during humid conditions",
-      "Brown to black lesions on stems and fruit",
-      "Rapid plant collapse in wet weather"
+      "Water-soaked leaf lesions that expand rapidly",
+      "White fungal growth on the undersides of leaves in humid weather",
+      "Brown to black stem lesions",
+      "Rapid collapse of plant parts in wet conditions"
     ],
     "treatment_steps": [
-      {"step": 1, "text": "Apply Ridomil Gold (metalaxyl + mancozeb) immediately"},
-      {"step": 2, "text": "Destroy severely infected plants — do not compost"},
-      {"step": 3, "text": "Avoid wetting foliage when watering"},
-      {"step": 4, "text": "Improve drainage around plants"}
+      {"step": 1, "text": "Apply Ridomil Gold immediately at first signs of infection"},
+      {"step": 2, "text": "Remove and destroy severely infected plants instead of composting them"},
+      {"step": 3, "text": "Avoid wetting foliage during irrigation"},
+      {"step": 4, "text": "Improve drainage around the crop"}
     ],
     "products": [
-      {"name": "Ridomil Gold (Metalaxyl+Mancozeb)", "type": "Systemic Fungicide", "availability": "Certified agrovet"},
-      {"name": "Dithane M45", "type": "Contact Fungicide", "availability": "Local agrovet"},
+      {"name": "Ridomil Gold (Metalaxyl + Mancozeb)", "type": "Systemic Fungicide", "availability": "Certified agrovet"},
+      {"name": "Dithane M45 (Mancozeb)", "type": "Contact Fungicide", "availability": "Local agrovet"},
       {"name": "Curzate (Cymoxanil)", "type": "Fungicide", "availability": "Certified agrovet"}
     ],
     "prevention": [
       "Use resistant varieties",
-      "Ensure good drainage",
+      "Maintain good drainage",
       "Avoid planting near potato fields",
-      "Apply preventive fungicides during wet season",
+      "Apply preventive fungicides during rainy periods",
       "Destroy volunteer tomato and potato plants"
     ]
   },
@@ -62,27 +62,170 @@
     "crop": "Tomato",
     "severity": "Medium",
     "symptoms": [
-      "Small dark brown to black spots on leaves",
-      "Spots may merge creating dead patches",
-      "Yellowing around spots",
-      "Spots on fruit are raised and scabby"
+      "Small dark spots on leaves",
+      "Yellow halos around lesions",
+      "Scabby lesions on fruit",
+      "Spotting may merge into larger dead tissue"
     ],
     "treatment_steps": [
-      {"step": 1, "text": "Apply copper-based bactericides (Kocide 3000)"},
-      {"step": 2, "text": "Remove infected leaves to reduce spread"},
-      {"step": 3, "text": "Avoid working in wet plants to prevent spread"},
-      {"step": 4, "text": "Disinfect tools after working with infected plants"}
+      {"step": 1, "text": "Apply a copper-based bactericide such as Kocide 3000"},
+      {"step": 2, "text": "Remove infected leaves to limit spread"},
+      {"step": 3, "text": "Avoid working in wet plants and sanitize tools after use"},
+      {"step": 4, "text": "Keep foliage dry by watering at the base"}
     ],
     "products": [
-      {"name": "Kocide 3000 (Copper hydroxide)", "type": "Bactericide", "availability": "Local agrovet"},
+      {"name": "Kocide 3000 (Copper Hydroxide)", "type": "Bactericide", "availability": "Local agrovet"},
       {"name": "Copper Oxychloride", "type": "Bactericide/Fungicide", "availability": "Local agrovet"}
     ],
     "prevention": [
-      "Use certified disease-free seeds",
-      "Treat seeds with hot water (52C for 25 min) before planting",
+      "Use certified disease-free seed",
+      "Sanitize tools and stakes between seasons",
       "Avoid overhead irrigation",
-      "Practice crop rotation with non-solanaceous crops",
-      "Disinfect stakes and trellises between seasons"
+      "Rotate with non-solanaceous crops",
+      "Use clean transplants"
+    ]
+  },
+  "Tomato_Leaf_Mold": {
+    "display_name": "Tomato Leaf Mold",
+    "crop": "Tomato",
+    "severity": "Medium",
+    "symptoms": [
+      "Yellow patches on the upper leaf surface",
+      "Olive-green to brown fuzzy mold on the underside of leaves",
+      "Leaves may curl and drop in severe infections"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Remove and destroy heavily infected leaves"},
+      {"step": 2, "text": "Improve ventilation and reduce humidity inside the canopy"},
+      {"step": 3, "text": "Apply a labelled fungicide during the first infection stage"}
+    ],
+    "products": [
+      {"name": "Mancozeb (Dithane M45)", "type": "Fungicide", "availability": "Local agrovet"},
+      {"name": "Copper Oxychloride", "type": "Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use resistant tomato varieties",
+      "Avoid overhead irrigation",
+      "Maintain spacing between plants for air movement"
+    ]
+  },
+  "Tomato_Septoria_leaf_spot": {
+    "display_name": "Tomato Septoria Leaf Spot",
+    "crop": "Tomato",
+    "severity": "Medium",
+    "symptoms": [
+      "Small circular spots with gray centers and dark margins",
+      "Tiny black fungal bodies within the lesions",
+      "Lower leaves turn yellow and drop as disease advances"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Remove and destroy infected lower leaves"},
+      {"step": 2, "text": "Apply a labelled fungicide such as mancozeb or copper"},
+      {"step": 3, "text": "Avoid overhead watering and sanitize tools between cuts"}
+    ],
+    "products": [
+      {"name": "Mancozeb (Dithane M45)", "type": "Fungicide", "availability": "Local agrovet"},
+      {"name": "Copper Oxychloride", "type": "Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Remove crop debris after harvest",
+      "Use disease-free seedlings",
+      "Practice crop rotation and keep foliage dry"
+    ]
+  },
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    "display_name": "Tomato Two-Spotted Spider Mite Damage",
+    "crop": "Tomato",
+    "severity": "Medium",
+    "symptoms": [
+      "Fine yellow or bronze speckling on leaves",
+      "Fine webbing under leaves and between stems",
+      "Leaf drying and drop under heavy infestations"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Wash the underside of leaves with a strong water spray where practical"},
+      {"step": 2, "text": "Apply a labelled miticide or insecticidal soap"},
+      {"step": 3, "text": "Remove heavily infested leaves and continue regular monitoring"}
+    ],
+    "products": [
+      {"name": "Insecticidal Soap", "type": "Miticide/Insecticide", "availability": "Local agrovet"},
+      {"name": "Neem Oil", "type": "Organic Control", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Maintain consistent watering to reduce stress",
+      "Inspect leaf undersides weekly",
+      "Avoid unnecessary broad-spectrum insecticides"
+    ]
+  },
+  "Tomato__Target_Spot": {
+    "display_name": "Tomato Target Spot",
+    "crop": "Tomato",
+    "severity": "High",
+    "symptoms": [
+      "Brown circular lesions with concentric rings",
+      "Leaf, stem, and fruit spots in severe infections",
+      "Defoliation and fruit blemishes"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Remove severely infected leaves and fruit"},
+      {"step": 2, "text": "Apply a labelled fungicide such as mancozeb"},
+      {"step": 3, "text": "Improve spacing and avoid overhead irrigation"}
+    ],
+    "products": [
+      {"name": "Mancozeb (Dithane M45)", "type": "Fungicide", "availability": "Local agrovet"},
+      {"name": "Copper Oxychloride", "type": "Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Remove crop debris after harvest",
+      "Use clean seedlings",
+      "Maintain airflow and crop rotation"
+    ]
+  },
+  "Tomato__Tomato_mosaic_virus": {
+    "display_name": "Tomato Mosaic Virus",
+    "crop": "Tomato",
+    "severity": "High",
+    "symptoms": [
+      "Mottled light and dark green patterns on leaves",
+      "Leaf distortion and reduced growth",
+      "Uneven or mottled fruit development"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "There is no cure; remove and destroy infected plants"},
+      {"step": 2, "text": "Disinfect hands, tools, stakes, and equipment"},
+      {"step": 3, "text": "Do not save seed or propagate from infected plants"}
+    ],
+    "products": [
+      {"name": "Disinfectant for tools", "type": "Sanitation", "availability": "Agrovet or farm supply shop"}
+    ],
+    "prevention": [
+      "Use certified disease-free seed and seedlings",
+      "Control weeds that may host the virus",
+      "Handle plants carefully and avoid contaminated material"
+    ]
+  },
+  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+    "display_name": "Tomato Yellow Leaf Curl Virus",
+    "crop": "Tomato",
+    "severity": "Critical",
+    "symptoms": [
+      "Yellowing and upward curling of leaf margins",
+      "Stunted growth and reduced leaf size",
+      "Marked reduction in fruit set"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "There is no cure; remove and destroy infected plants"},
+      {"step": 2, "text": "Control whitefly vectors with a labelled product"},
+      {"step": 3, "text": "Use yellow sticky traps to monitor whitefly activity"}
+    ],
+    "products": [
+      {"name": "Imidacloprid", "type": "Systemic Insecticide", "availability": "Certified agrovet"},
+      {"name": "Neem Oil", "type": "Organic Insecticide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use TYLCV-resistant varieties",
+      "Control whiteflies and weeds",
+      "Maintain clean fallow periods between plantings"
     ]
   },
   "Tomato_Yellow_Leaf_Curl_Virus": {
@@ -92,26 +235,24 @@
     "symptoms": [
       "Yellowing and upward curling of leaf margins",
       "Stunted growth and reduced leaf size",
-      "Reduced fruit production or no fruit at all",
-      "Drooping appearance of new growth"
+      "Reduced fruit production or no fruit at all"
     ],
     "treatment_steps": [
-      {"step": 1, "text": "No cure for virus — remove and destroy infected plants immediately"},
-      {"step": 2, "text": "Control whitefly vectors with imidacloprid or pyrethroids"},
+      {"step": 1, "text": "No cure is available; remove and destroy infected plants immediately"},
+      {"step": 2, "text": "Control whitefly vectors with imidacloprid or a registered pyrethroid"},
       {"step": 3, "text": "Install yellow sticky traps to monitor whitefly populations"},
-      {"step": 4, "text": "Apply neem oil as organic whitefly deterrent"}
+      {"step": 4, "text": "Use reflective mulch or neem spray to suppress whiteflies"}
     ],
     "products": [
-      {"name": "Imidacloprid (Confidor)", "type": "Insecticide (systemic)", "availability": "Certified agrovet"},
+      {"name": "Imidacloprid (Confidor)", "type": "Systemic Insecticide", "availability": "Certified agrovet"},
       {"name": "Neem Oil", "type": "Organic Insecticide", "availability": "Local agrovet"},
       {"name": "Yellow Sticky Traps", "type": "Monitoring/Control", "availability": "Agrovet/Online"}
     ],
     "prevention": [
       "Use TYLCV-resistant tomato varieties",
-      "Install reflective mulch to repel whiteflies",
       "Use yellow sticky traps for monitoring",
-      "Maintain crop-free periods between seasons",
-      "Control weeds that host whiteflies"
+      "Remove weeds that host whitefly vectors",
+      "Maintain crop-free periods between seasons"
     ]
   },
   "Tomato_healthy": {
@@ -119,23 +260,47 @@
     "crop": "Tomato",
     "severity": "Low",
     "symptoms": [
-      "Green, vibrant leaves with no visible spots or lesions",
+      "Green, vibrant leaves with no visible lesions",
       "Normal growth and fruit development",
-      "No discoloration or wilting"
+      "No wilting or unusual discoloration"
     ],
     "treatment_steps": [
-      {"step": 1, "text": "No treatment needed — continue regular care"},
-      {"step": 2, "text": "Maintain consistent watering schedule"},
+      {"step": 1, "text": "No treatment needed; continue normal care"},
+      {"step": 2, "text": "Maintain a consistent watering schedule"},
       {"step": 3, "text": "Apply balanced fertilizer as needed"}
     ],
     "products": [
       {"name": "NPK Fertilizer", "type": "Fertilizer", "availability": "Local agrovet"}
     ],
     "prevention": [
-      "Maintain good agricultural practices",
-      "Proper watering and balanced fertilization",
-      "Adequate plant spacing",
-      "Regular monitoring for early disease detection"
+      "Practice good field hygiene",
+      "Maintain proper spacing and balanced nutrition",
+      "Monitor regularly for early symptoms"
+    ]
+  },
+  "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+    "display_name": "Maize Gray Leaf Spot",
+    "crop": "Maize",
+    "severity": "High",
+    "symptoms": [
+      "Rectangular tan to gray lesions between leaf veins",
+      "Spots may merge and kill large leaf areas",
+      "Premature leaf death and reduced grain fill"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Apply propiconazole or azoxystrobin at the first sign of infection"},
+      {"step": 2, "text": "Remove and destroy infected crop residue after harvest"},
+      {"step": 3, "text": "Maintain proper plant density and airflow in the field"}
+    ],
+    "products": [
+      {"name": "Propiconazole (Tilt)", "type": "Fungicide", "availability": "Certified agrovet"},
+      {"name": "Azoxystrobin", "type": "Fungicide", "availability": "Certified agrovet"}
+    ],
+    "prevention": [
+      "Plant resistant hybrids",
+      "Rotate with non-host crops",
+      "Bury or remove crop residue after harvest",
+      "Avoid excessive nitrogen"
     ]
   },
   "Corn_(maize)_Gray_leaf_spot": {
@@ -143,304 +308,39 @@
     "crop": "Maize",
     "severity": "High",
     "symptoms": [
-      "Rectangular tan to gray spots between leaf veins",
-      "Spots may merge killing large leaf areas",
-      "Premature leaf death reducing yield",
-      "Lesions typically appear on lower leaves first"
+      "Rectangular tan to gray lesions between leaf veins",
+      "Lesions may join and kill larger leaf areas",
+      "Premature leaf death and reduced grain fill"
     ],
     "treatment_steps": [
-      {"step": 1, "text": "Apply fungicides containing propiconazole or azoxystrobin at early infection"},
-      {"step": 2, "text": "Remove and destroy infected crop residue after harvest"},
-      {"step": 3, "text": "Improve air circulation by maintaining proper plant density"}
+      {"step": 1, "text": "Apply propiconazole or azoxystrobin early in the infection cycle"},
+      {"step": 2, "text": "Remove infected crop residue after harvest"},
+      {"step": 3, "text": "Avoid dense planting and maintain air movement"}
     ],
     "products": [
       {"name": "Propiconazole (Tilt)", "type": "Fungicide", "availability": "Certified agrovet"},
-      {"name": "Azoxystrobin (Quadris)", "type": "Fungicide", "availability": "Certified agrovet"}
+      {"name": "Azoxystrobin", "type": "Fungicide", "availability": "Certified agrovet"}
     ],
     "prevention": [
       "Plant resistant hybrids",
       "Rotate with non-host crops",
-      "Bury crop residue after harvest",
-      "Avoid excessive nitrogen application",
-      "Maintain proper plant density"
+      "Bury or remove crop residue after harvest",
+      "Avoid excessive nitrogen"
     ]
   },
-  "Corn_(maize)_Northern_Leaf_Blight": {
-    "display_name": "Maize Northern Leaf Blight",
-    "crop": "Maize",
-    "severity": "High",
-    "symptoms": [
-      "Large elongated cigar-shaped gray-green to tan lesions on lower leaves",
-      "Lesions can be 3-15 cm long",
-      "Severely affected leaves appear burned",
-      "Reduced ear fill and yield loss"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Apply fungicide (propiconazole) if infection occurs before silking"},
-      {"step": 2, "text": "Remove and destroy infected crop debris"},
-      {"step": 3, "text": "Ensure balanced fertilization and proper plant density"}
-    ],
-    "products": [
-      {"name": "Propiconazole (Tilt)", "type": "Fungicide", "availability": "Certified agrovet"},
-      {"name": "Mancozeb (Dithane M45)", "type": "Contact Fungicide", "availability": "Local agrovet"}
-    ],
-    "prevention": [
-      "Use NLB-resistant maize varieties",
-      "Practice crop rotation",
-      "Ensure balanced fertilization",
-      "Maintain proper plant density",
-      "Remove volunteer maize plants"
-    ]
-  },
-  "Maize_Lethal_Necrosis": {
-    "display_name": "Maize Lethal Necrosis Disease (MLND)",
-    "crop": "Maize",
-    "severity": "Critical",
-    "symptoms": [
-      "Severe chlorosis and necrosis of leaves",
-      "Stunted growth and dead heart symptom",
-      "Sterile tassels and poor ear development",
-      "Plant death in severe cases"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "No cure once infected — rogue out and destroy infected plants immediately"},
-      {"step": 2, "text": "Control insect vectors (thrips, aphids) with appropriate insecticides"},
-      {"step": 3, "text": "Avoid planting near infected fields"},
-      {"step": 4, "text": "Report outbreak to local agricultural extension officer"}
-    ],
-    "products": [
-      {"name": "Imidacloprid (Confidor)", "type": "Insecticide (systemic)", "availability": "Certified agrovet"},
-      {"name": "Lambda-cyhalothrin (Karate)", "type": "Insecticide", "availability": "Local agrovet"}
-    ],
-    "prevention": [
-      "Plant MLND-tolerant varieties (e.g., WE1101, WE2109)",
-      "Practice strict crop rotation",
-      "Remove volunteer maize plants",
-      "Ensure early planting",
-      "Control insect vectors proactively",
-      "Use certified clean seed"
-    ]
-  },
-  "Kale_Black_Rot": {
-    "display_name": "Kale Black Rot",
-    "crop": "Kale",
-    "severity": "High",
-    "symptoms": [
-      "V-shaped yellow lesions starting from leaf margins",
-      "Darkening of veins within lesions",
-      "Leaves turn brown and dry out",
-      "Affected leaves become brittle"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Remove and destroy infected leaves immediately"},
-      {"step": 2, "text": "Apply copper-based bactericide (Kocide 3000)"},
-      {"step": 3, "text": "Avoid wetting leaves when watering"},
-      {"step": 4, "text": "Improve air circulation around plants"}
-    ],
-    "products": [
-      {"name": "Copper Oxychloride", "type": "Bactericide", "availability": "Local agrovet"},
-      {"name": "Kocide 3000 (Copper hydroxide)", "type": "Bactericide", "availability": "Certified agrovet"}
-    ],
-    "prevention": [
-      "Use certified disease-free seeds or transplants",
-      "Hot-water treat seeds (50C for 25 min) before planting",
-      "Practice 3-year crop rotation with non-brassica crops",
-      "Ensure good air circulation and drainage",
-      "Avoid overhead irrigation"
-    ]
-  },
-  "Kale_Downy_Mildew": {
-    "display_name": "Kale Downy Mildew",
-    "crop": "Kale",
-    "severity": "Medium",
-    "symptoms": [
-      "Yellow patches on upper leaf surface",
-      "White/gray fuzzy growth on leaf underside",
-      "Leaves curl and turn brown at edges",
-      "Reduced leaf quality and yield"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Apply Ridomil Gold or mefenoxam-based fungicide"},
-      {"step": 2, "text": "Remove severely affected leaves"},
-      {"step": 3, "text": "Improve air circulation by thinning plants"},
-      {"step": 4, "text": "Avoid watering in the evening"}
-    ],
-    "products": [
-      {"name": "Ridomil Gold (Metalaxyl+Mancozeb)", "type": "Systemic Fungicide", "availability": "Certified agrovet"},
-      {"name": "Mancozeb (Dithane M45)", "type": "Contact Fungicide", "availability": "Local agrovet"}
-    ],
-    "prevention": [
-      "Plant resistant kale varieties",
-      "Ensure wide spacing for airflow",
-      "Avoid overhead irrigation",
-      "Remove crop debris after harvest",
-      "Apply preventive fungicides during cool wet periods"
-    ]
-  },
-  "Kale_Aphids": {
-    "display_name": "Kale Aphid Infestation",
-    "crop": "Kale",
-    "severity": "Medium",
-    "symptoms": [
-      "Curled yellow leaves with sticky honeydew",
-      "Clusters of small green/black insects on leaf undersides",
-      "Sooty mold growing on honeydew",
-      "Stunted plant growth"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Spray with neem oil or insecticidal soap for organic control"},
-      {"step": 2, "text": "For heavy infestation, use pymetrozine or imidacloprid"},
-      {"step": 3, "text": "Wash leaves with soapy water to remove honeydew"},
-      {"step": 4, "text": "Introduce ladybugs as natural predators"}
-    ],
-    "products": [
-      {"name": "Neem Oil", "type": "Organic Insecticide", "availability": "Local agrovet"},
-      {"name": "Pymetrozine (Chess)", "type": "Insecticide (selective)", "availability": "Certified agrovet"},
-      {"name": "Insecticidal Soap", "type": "Organic Control", "availability": "Local agrovet"}
-    ],
-    "prevention": [
-      "Introduce beneficial insects (ladybugs, lacewings)",
-      "Use reflective mulch to deter aphids",
-      "Plant companion crops like nasturtiums as trap crop",
-      "Monitor regularly and act early",
-      "Maintain crop diversity in the garden"
-    ]
-  },
-  "Kale_Cabbage_Worm": {
-    "display_name": "Kale Cabbage Worm",
-    "crop": "Kale",
-    "severity": "Medium",
-    "symptoms": [
-      "Irregular holes in leaves from feeding",
-      "Green caterpillars on undersides of leaves",
-      "Dark green frass (droppings) on leaves",
-      "Severe defoliation in heavy infestations"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Hand-pick caterpillars from plants (effective for small plots)"},
-      {"step": 2, "text": "Apply Bt (Bacillus thuringiensis) spray — safe and effective"},
-      {"step": 3, "text": "Use neem-based insecticides for larger infestations"},
-      {"step": 4, "text": "Install floating row covers after treatment"}
-    ],
-    "products": [
-      {"name": "Bt (Bacillus thuringiensis)", "type": "Biological Insecticide", "availability": "Local agrovet"},
-      {"name": "Neem Oil", "type": "Organic Insecticide", "availability": "Local agrovet"},
-      {"name": "Dipel DF (Bt formulation)", "type": "Biological Insecticide", "availability": "Certified agrovet"}
-    ],
-    "prevention": [
-      "Use floating row covers to prevent butterfly egg-laying",
-      "Introduce natural predators (trichogramma wasps)",
-      "Practice crop rotation with non-brassica crops",
-      "Remove crop debris after harvest",
-      "Monitor plants weekly for eggs and larvae"
-    ]
-  },
-  "Fall_Armyworm": {
-    "display_name": "Fall Armyworm",
-    "crop": "Maize",
-    "severity": "Critical",
-    "symptoms": [
-      "Ragged holes in leaves from feeding",
-      "Window-pane feeding damage (leaf tissue eaten, epidermis left)",
-      "Sawdust-like frass near leaf whorls",
-      "Caterpillars with inverted Y marking on head capsule",
-      "Damage concentrated in whorl of young maize plants"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Apply Fall Armyworm-specific pesticide (Emamectin benzoate or Spinosad)"},
-      {"step": 2, "text": "Hand-pick caterpillars from whorls in small plots"},
-      {"step": 3, "text": "Use pheromone traps for monitoring adult moth populations"},
-      {"step": 4, "text": "Apply sand + ash mixture into whorls as organic control"},
-      {"step": 5, "text": "Report severe outbreaks to agricultural extension officer"}
-    ],
-    "products": [
-      {"name": "Emamectin Benzoate (Proclaim)", "type": "Insecticide", "availability": "Certified agrovet"},
-      {"name": "Spinosad (Tracer)", "type": "Naturalyte Insecticide", "availability": "Certified agrovet"},
-      {"name": "Neem-based Sprays", "type": "Organic Control", "availability": "Local agrovet"},
-      {"name": "FAW Pheromone Traps", "type": "Monitoring", "availability": "Agrovet/Online"}
-    ],
-    "prevention": [
-      "Plant early to avoid peak FAW season",
-      "Use push-pull technology (Desmodium + Napier grass)",
-      "Apply neem-based sprays preventively",
-      "Monitor with pheromone traps",
-      "Destroy crop residues after harvest",
-      "Encourage natural enemies (birds, predatory insects)"
-    ]
-  },
-  "Potato_Late_blight": {
-    "display_name": "Potato Late Blight",
-    "crop": "Potato",
-    "severity": "Critical",
-    "symptoms": [
-      "Water-soaked dark lesions on leaves expanding rapidly",
-      "White fuzzy growth on leaf undersides in humid conditions",
-      "Brown to black lesions on stems",
-      "Tubers show reddish-brown dry rot under skin"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Apply Ridomil Gold (metalaxyl + mancozeb) immediately at first sign"},
-      {"step": 2, "text": "Destroy severely infected plants and tubers"},
-      {"step": 3, "text": "Avoid harvesting from infected plants — spores spread to tubers"},
-      {"step": 4, "text": "Improve drainage and avoid overhead irrigation"}
-    ],
-    "products": [
-      {"name": "Ridomil Gold (Metalaxyl+Mancozeb)", "type": "Systemic Fungicide", "availability": "Certified agrovet"},
-      {"name": "Dithane M45 (Mancozeb)", "type": "Contact Fungicide", "availability": "Local agrovet"},
-      {"name": "Cymoxanil (Curzate)", "type": "Fungicide", "availability": "Certified agrovet"}
-    ],
-    "prevention": [
-      "Use certified disease-free seed potatoes",
-      "Ensure good field drainage",
-      "Hill up soil around plants to protect tubers",
-      "Apply preventive fungicides during wet season",
-      "Destroy volunteer potato plants and cull piles"
-    ]
-  },
-  "Onion_Purple_Blotch": {
-    "display_name": "Onion Purple Blotch",
-    "crop": "Onion",
-    "severity": "High",
-    "symptoms": [
-      "Small water-soaked lesions on leaves",
-      "Lesions enlarge with purple centers and yellow halos",
-      "Affected leaves turn yellow and die back from tips",
-      "Bulb size reduced significantly"
-    ],
-    "treatment_steps": [
-      {"step": 1, "text": "Apply mancozeb or chlorothalonil-based fungicide at first sign"},
-      {"step": 2, "text": "Remove and destroy severely affected leaves"},
-      {"step": 3, "text": "Ensure proper spacing for air circulation"},
-      {"step": 4, "text": "Avoid overhead irrigation — use drip irrigation"}
-    ],
-    "products": [
-      {"name": "Mancozeb (Dithane M45)", "type": "Fungicide", "availability": "Local agrovet"},
-      {"name": "Chlorothalonil (Bravo)", "type": "Fungicide", "availability": "Certified agrovet"},
-      {"name": "Ridomil Gold", "type": "Systemic Fungicide", "availability": "Certified agrovet"}
-    ],
-    "prevention": [
-      "Use clean certified planting material",
-      "Practice crop rotation with non-allium crops",
-      "Ensure proper plant spacing for airflow",
-      "Avoid overhead irrigation",
-      "Apply preventive fungicides during warm humid weather",
-      "Remove crop debris after harvest"
-    ]
-  },
-  "Maize_Rust": {
+  "Corn_(maize)___Common_rust_": {
     "display_name": "Maize Common Rust",
     "crop": "Maize",
     "severity": "Medium",
     "symptoms": [
-      "Small reddish-brown pustules on upper and lower leaf surfaces",
-      "Pustules may coalesce killing large leaf areas",
-      "Reduced photosynthesis and yield loss",
-      "More severe in cool humid conditions"
+      "Reddish-brown pustules on both leaf surfaces",
+      "Pustules may merge and kill large leaf sections",
+      "Reduced photosynthesis and yield loss"
     ],
     "treatment_steps": [
-      {"step": 1, "text": "Apply fungicide (propiconazole/Tilt) if infection is severe and before tasseling"},
-      {"step": 2, "text": "Remove and destroy infected crop residue after harvest"},
-      {"step": 3, "text": "Ensure balanced fertilization — avoid excess nitrogen"}
+      {"step": 1, "text": "Apply a recommended fungicide if infection is severe and before tasseling"},
+      {"step": 2, "text": "Remove infected crop residue after harvest"},
+      {"step": 3, "text": "Maintain balanced plant nutrition"}
     ],
     "products": [
       {"name": "Propiconazole (Tilt)", "type": "Fungicide", "availability": "Certified agrovet"},
@@ -450,8 +350,347 @@
       "Plant rust-resistant maize hybrids",
       "Avoid late planting",
       "Practice crop rotation",
-      "Maintain proper plant nutrition",
       "Remove volunteer maize plants"
+    ]
+  },
+  "Maize_Rust": {
+    "display_name": "Maize Common Rust",
+    "crop": "Maize",
+    "severity": "Medium",
+    "symptoms": [
+      "Small reddish-brown pustules on leaves",
+      "Pustules may merge and create dead areas",
+      "Lower photosynthetic activity and yield loss"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Apply a registered fungicide if infection is severe before tasseling"},
+      {"step": 2, "text": "Remove and destroy infected residue after harvest"},
+      {"step": 3, "text": "Keep plant nutrition balanced and avoid excess nitrogen"}
+    ],
+    "products": [
+      {"name": "Propiconazole (Tilt)", "type": "Fungicide", "availability": "Certified agrovet"},
+      {"name": "Mancozeb (Dithane M45)", "type": "Contact Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Plant rust-resistant hybrids",
+      "Avoid late planting",
+      "Practice rotation and remove volunteer maize"
+    ]
+  },
+  "Corn_(maize)___Northern_Leaf_Blight": {
+    "display_name": "Maize Northern Leaf Blight",
+    "crop": "Maize",
+    "severity": "High",
+    "symptoms": [
+      "Long cigar-shaped gray-green to tan lesions",
+      "Lesions appear on lower leaves and spread upward",
+      "Severely affected leaves look burned"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Apply a recommended fungicide before silking when infection is detected early"},
+      {"step": 2, "text": "Remove and destroy infected crop debris"},
+      {"step": 3, "text": "Maintain balanced fertilization and proper plant density"}
+    ],
+    "products": [
+      {"name": "Propiconazole (Tilt)", "type": "Fungicide", "availability": "Certified agrovet"},
+      {"name": "Mancozeb (Dithane M45)", "type": "Contact Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use Northern Leaf Blight-resistant varieties",
+      "Practice crop rotation",
+      "Remove volunteer maize plants",
+      "Maintain balanced nutrition"
+    ]
+  },
+  "Corn_(maize)_Northern_Leaf_Blight": {
+    "display_name": "Maize Northern Leaf Blight",
+    "crop": "Maize",
+    "severity": "High",
+    "symptoms": [
+      "Long cigar-shaped gray-green to tan lesions",
+      "Lesions appear on lower leaves and spread upward",
+      "Severely affected leaves look burned"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Apply a recommended fungicide before silking when infection is caught early"},
+      {"step": 2, "text": "Remove and destroy infected crop debris"},
+      {"step": 3, "text": "Maintain balanced fertilization and proper plant density"}
+    ],
+    "products": [
+      {"name": "Propiconazole (Tilt)", "type": "Fungicide", "availability": "Certified agrovet"},
+      {"name": "Mancozeb (Dithane M45)", "type": "Contact Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use resistant varieties",
+      "Practice rotation",
+      "Remove volunteer maize plants",
+      "Maintain balanced nutrition"
+    ]
+  },
+  "Corn_(maize)___healthy": {
+    "display_name": "Healthy Maize",
+    "crop": "Maize",
+    "severity": "Low",
+    "symptoms": [
+      "Green leaves with no visible lesions or rust pustules",
+      "Normal growth and development",
+      "No wilting or unusual discoloration"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "No treatment is needed; continue regular crop care"},
+      {"step": 2, "text": "Scout leaves and whorls regularly for pests or disease"},
+      {"step": 3, "text": "Maintain balanced watering and fertilizer application"}
+    ],
+    "products": [
+      {"name": "NPK Fertilizer", "type": "Fertilizer", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use certified seed",
+      "Scout regularly",
+      "Maintain good nutrition and spacing"
+    ]
+  },
+  "Potato___Early_blight": {
+    "display_name": "Potato Early Blight",
+    "crop": "Potato",
+    "severity": "High",
+    "symptoms": [
+      "Brown concentric ring lesions on older leaves",
+      "Leaf yellowing and early defoliation",
+      "Damage starts from the lower canopy"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Apply a copper-based or mancozeb fungicide at the first sign of disease"},
+      {"step": 2, "text": "Remove infected lower leaves to reduce spore build-up"},
+      {"step": 3, "text": "Ensure good spacing and airflow between plants"},
+      {"step": 4, "text": "Water the crop at the base and avoid wetting foliage"}
+    ],
+    "products": [
+      {"name": "Mancozeb (Dithane M45)", "type": "Fungicide", "availability": "Local agrovet"},
+      {"name": "Copper Oxychloride", "type": "Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use certified disease-free seed potato",
+      "Practice rotation with non-solanaceous crops",
+      "Avoid overhead irrigation",
+      "Maintain good canopy ventilation"
+    ]
+  },
+  "Potato___Late_blight": {
+    "display_name": "Potato Late Blight",
+    "crop": "Potato",
+    "severity": "Critical",
+    "symptoms": [
+      "Water-soaked lesions on leaves that spread rapidly",
+      "White fuzzy growth on leaf undersides in humid weather",
+      "Brown-black lesions on stems and tubers"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Apply Ridomil Gold immediately at the first sign of infection"},
+      {"step": 2, "text": "Destroy severely infected plants and tubers to prevent spread"},
+      {"step": 3, "text": "Improve drainage and avoid overhead irrigation"},
+      {"step": 4, "text": "Do not harvest from severely infected plants"}
+    ],
+    "products": [
+      {"name": "Ridomil Gold (Metalaxyl + Mancozeb)", "type": "Systemic Fungicide", "availability": "Certified agrovet"},
+      {"name": "Dithane M45 (Mancozeb)", "type": "Contact Fungicide", "availability": "Local agrovet"},
+      {"name": "Curzate (Cymoxanil)", "type": "Fungicide", "availability": "Certified agrovet"}
+    ],
+    "prevention": [
+      "Use certified disease-free seed potatoes",
+      "Ensure good field drainage",
+      "Hill soil around plants to protect tubers",
+      "Apply preventive fungicides in wet weather",
+      "Destroy volunteer potato plants and cull piles"
+    ]
+  },
+  "Potato_Late_blight": {
+    "display_name": "Potato Late Blight",
+    "crop": "Potato",
+    "severity": "Critical",
+    "symptoms": [
+      "Water-soaked dark lesions on leaves expanding rapidly",
+      "White fuzzy growth on leaf undersides in humid conditions",
+      "Brown to black lesions on stems and tubers"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Apply Ridomil Gold immediately at the first sign of infection"},
+      {"step": 2, "text": "Destroy severely infected plants and tubers"},
+      {"step": 3, "text": "Improve drainage and avoid overhead irrigation"},
+      {"step": 4, "text": "Do not harvest from heavily infected plants"}
+    ],
+    "products": [
+      {"name": "Ridomil Gold (Metalaxyl + Mancozeb)", "type": "Systemic Fungicide", "availability": "Certified agrovet"},
+      {"name": "Dithane M45 (Mancozeb)", "type": "Contact Fungicide", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use certified seed potatoes",
+      "Ensure proper drainage",
+      "Hill soil around plants",
+      "Apply preventive fungicides in rainy weather"
+    ]
+  },
+  "Potato___healthy": {
+    "display_name": "Healthy Potato",
+    "crop": "Potato",
+    "severity": "Low",
+    "symptoms": [
+      "Green vigorous vines with no visible lesions",
+      "Normal foliage and canopy development",
+      "No obvious wilting or discoloration"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "No treatment needed; continue regular crop care"},
+      {"step": 2, "text": "Maintain a consistent irrigation schedule"},
+      {"step": 3, "text": "Apply balanced fertilizer as needed"}
+    ],
+    "products": [
+      {"name": "NPK Fertilizer", "type": "Fertilizer", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use clean seed potatoes",
+      "Inspect crops regularly",
+      "Maintain good drainage and plant spacing"
+    ]
+  },
+  "Apple___Apple_scab": {
+    "display_name": "Apple Scab",
+    "crop": "Apple",
+    "severity": "High",
+    "symptoms": [
+      "Olive-green to brown spots on leaves",
+      "Dark scab lesions on fruit",
+      "Premature leaf drop in severe cases"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Remove fallen leaves and fruit to reduce inoculum"},
+      {"step": 2, "text": "Apply a labelled apple scab fungicide during the protection window"},
+      {"step": 3, "text": "Prune the canopy to improve airflow and sunlight penetration"}
+    ],
+    "products": [
+      {"name": "Mancozeb", "type": "Fungicide", "availability": "Certified agrovet"},
+      {"name": "Copper-based fungicide", "type": "Fungicide", "availability": "Certified agrovet"}
+    ],
+    "prevention": [
+      "Remove leaf litter",
+      "Use scab-resistant varieties",
+      "Maintain an open canopy"
+    ]
+  },
+  "Apple___Black_rot": {
+    "display_name": "Apple Black Rot",
+    "crop": "Apple",
+    "severity": "High",
+    "symptoms": [
+      "Frogeye leaf spots",
+      "Dark sunken lesions on fruit",
+      "Cankers on branches and twigs"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Prune and destroy cankered branches and mummified fruit"},
+      {"step": 2, "text": "Apply a labelled fungicide according to local guidance"},
+      {"step": 3, "text": "Disinfect pruning tools between cuts"}
+    ],
+    "products": [
+      {"name": "Copper-based fungicide", "type": "Fungicide", "availability": "Certified agrovet"}
+    ],
+    "prevention": [
+      "Remove dead wood and fruit mummies",
+      "Avoid injuries to the tree",
+      "Maintain good airflow"
+    ]
+  },
+  "Apple___Cedar_apple_rust": {
+    "display_name": "Apple Cedar Rust",
+    "crop": "Apple",
+    "severity": "Medium",
+    "symptoms": [
+      "Bright yellow-orange spots on leaves",
+      "Tiny dark specks inside lesions",
+      "Premature leaf drop"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Remove badly affected leaves where practical"},
+      {"step": 2, "text": "Apply a labelled fungicide during the recommended protection window"},
+      {"step": 3, "text": "Reduce nearby alternate hosts where appropriate"}
+    ],
+    "products": [
+      {"name": "Mancozeb", "type": "Fungicide", "availability": "Certified agrovet"}
+    ],
+    "prevention": [
+      "Plant resistant varieties",
+      "Improve airflow and canopy management",
+      "Monitor during wet spring weather"
+    ]
+  },
+  "Apple___Mosaic_virus": {
+    "display_name": "Apple Mosaic Virus",
+    "crop": "Apple",
+    "severity": "Medium",
+    "symptoms": [
+      "Yellow mosaic patterns on leaves",
+      "Reduced vigor and growth",
+      "Lower fruit production"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Remove and destroy severely affected trees where recommended"},
+      {"step": 2, "text": "Use certified virus-free planting material"},
+      {"step": 3, "text": "Disinfect tools used for pruning or grafting"}
+    ],
+    "products": [
+      {"name": "Tool disinfectant", "type": "Sanitation", "availability": "Farm supply shop"}
+    ],
+    "prevention": [
+      "Use certified nursery stock",
+      "Disinfect pruning tools",
+      "Monitor new plantings regularly"
+    ]
+  },
+  "Apple___Rust": {
+    "display_name": "Apple Rust",
+    "crop": "Apple",
+    "severity": "Medium",
+    "symptoms": [
+      "Orange-yellow rust spots on leaves",
+      "Raised spots on the lower leaf surface",
+      "Early leaf drop"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "Remove heavily affected leaves"},
+      {"step": 2, "text": "Apply a labelled fungicide according to local guidance"},
+      {"step": 3, "text": "Improve canopy airflow to reduce disease pressure"}
+    ],
+    "products": [
+      {"name": "Mancozeb", "type": "Fungicide", "availability": "Certified agrovet"}
+    ],
+    "prevention": [
+      "Use resistant varieties",
+      "Remove infected debris",
+      "Monitor during humid weather"
+    ]
+  },
+  "Apple___healthy": {
+    "display_name": "Healthy Apple",
+    "crop": "Apple",
+    "severity": "Low",
+    "symptoms": [
+      "Healthy green leaves",
+      "Normal growth and fruit set",
+      "No visible lesions or abnormal discoloration"
+    ],
+    "treatment_steps": [
+      {"step": 1, "text": "No treatment is needed; continue regular orchard care"},
+      {"step": 2, "text": "Monitor leaves, shoots, and fruit regularly"},
+      {"step": 3, "text": "Maintain balanced watering and nutrition"}
+    ],
+    "products": [
+      {"name": "Balanced orchard fertilizer", "type": "Fertilizer", "availability": "Local agrovet"}
+    ],
+    "prevention": [
+      "Use good orchard hygiene",
+      "Prune for airflow",
+      "Scout regularly for early symptoms"
     ]
   }
 }
+

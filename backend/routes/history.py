@@ -1,5 +1,5 @@
 """
-Shamba AI - History Routes
+AgroVision AI - History Routes
 GET /api/history - User scan history
 GET /api/history/{id} - Specific scan result
 """
@@ -9,7 +9,7 @@ from fastapi import APIRouter, HTTPException, Header, Query
 from typing import Optional
 
 from db.database import get_connection
-from utils.auth_utils import verify_jwt, extract_token_from_header
+from utils.auth_utils import get_active_user
 
 router = APIRouter(prefix="/api/history", tags=["History"])
 
@@ -18,16 +18,7 @@ def get_user_id(authorization: str = Header(None)):
     """Extract user_id from JWT token."""
     if not authorization:
         raise HTTPException(status_code=401, detail="Authorization required")
-
-    token = extract_token_from_header(authorization)
-    if not token:
-        raise HTTPException(status_code=401, detail="Invalid authorization header")
-
-    payload = verify_jwt(token)
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
-
-    return payload["user_id"]
+    return get_active_user(authorization)["user_id"]
 
 
 @router.get("")

@@ -1,13 +1,13 @@
-"""
-Shamba AI - Prediction Module
-Smart router: ONNX → Gemini Vision → Fallback
-Returns same format as original: {class_name, confidence, display, crop, emoji}
-"""
+"""Crop-routed AgroVision prediction with Gemini explanation."""
 
 import logging
 
-from .model import get_model
-from .gemini_vision import predict_gemini_vision
+from .agrovision import get_agrovision_registry
+from .gemini_vision import (
+    explain_classifier_result,
+    predict_gemini_vision,
+    verify_selected_crop,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -15,54 +15,47 @@ logger = logging.getLogger(__name__)
 def predict_disease(
     image_bytes: bytes, crop_type: str = None, mime_type: str = "image/jpeg"
 ) -> dict:
-    """
-    Run disease prediction on an image.
+    """Run the selected crop's AgroVision model and explain its result."""
+    registry = get_agrovision_registry()
+    normalized_crop = (crop_type or "").strip().lower()
+    if normalized_crop not in registry.specs:
+        return {
+            "unsupported": True,
+            "message": "crop not supported.",
+            "crop": crop_type or "Unknown",
+        }
 
-    Priority:
-    1. Gemini Vision API — independent, open-ended image analysis grounded in
-       actual observed symptoms (not constrained to a fixed coarse label set)
-    2. Local ONNX model — fast offline fallback if Gemini is unavailable
-       (note: several ONNX classes are only approximate matches to our labels)
-    3. Fallback — return unknown
-
-    Args:
-        image_bytes: Raw image bytes
-        crop_type: Crop type from user selection (e.g., "Tomato", "Kale")
-
-    Returns:
-        Dict with class_name, confidence, disease_name, display, crop, emoji
-    """
-    # ==========================================
-    # PATH 1: Try Gemini Vision API (independent diagnosis)
-    # ==========================================
     try:
-        result = predict_gemini_vision(image_bytes, crop_type, mime_type=mime_type)
-        if result and result.get("confidence", 0) > 20:
-            logger.info(
-                f"[AI] Gemini result: {result['display']} ({result['confidence']}%)"
-            )
-            return result
-    except Exception as e:
-        logger.warning(f"[AI] Gemini API error: {e}")
+        crop_matches = verify_selected_crop(image_bytes, crop_type, mime_type=mime_type)
+        if crop_matches is False:
+            return {
+                "crop_mismatch": True,
+                "message": f"The image does not appear to be a {crop_type}. Please select the correct crop.",
+                "crop": crop_type,
+            }
+    except Exception as exc:
+        logger.warning("[AI] Gemini crop verification error: %s", exc)
 
-    # ==========================================
-    # PATH 2: Try local ONNX model
-    # ==========================================
     try:
-        model = get_model()
-        result = model.predict(image_bytes, crop_type)
-        if result and result.get("confidence", 0) > 40:
+        result = registry.predict(image_bytes, crop_type)
+        if result:
+            explained = explain_classifier_result(result)
             logger.info(
-                f"[AI] ONNX result: {result['display']} ({result['confidence']}%)"
+                "[AI] AgroVision result: %s (%s%%)",
+                explained["display"],
+                explained["confidence"],
             )
-            return result
-    except Exception as e:
-        logger.warning(f"[AI] ONNX model error: {e}")
+            return explained
+    except Exception as exc:
+        logger.warning("[AI] AgroVision prediction error: %s", exc)
 
-    # ==========================================
-    # PATH 3: Fallback — return unknown
-    # ==========================================
-    logger.warning("[AI] All prediction methods failed")
+    try:
+        fallback = predict_gemini_vision(image_bytes, crop_type, mime_type=mime_type)
+        if fallback:
+            return fallback
+    except Exception as exc:
+        logger.warning("[AI] Gemini fallback error: %s", exc)
+
     return {
         "class_name": "Unknown",
         "confidence": 0.0,
@@ -70,4 +63,5 @@ def predict_disease(
         "display": "Could not identify disease",
         "crop": crop_type or "Unknown",
         "emoji": "❓",
+        "source": "agrovision",
     }

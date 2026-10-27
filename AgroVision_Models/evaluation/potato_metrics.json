@@ -1,0 +1,26 @@
+{
+  "crop": "Potato",
+  "model": "Potato_EfficientNetB0",
+  "architecture": "EfficientNetB0",
+  "input_size": [
+    224,
+    224
+  ],
+  "num_classes": 3,
+  "test_set": {
+    "samples": 358,
+    "accuracy": 0.9665,
+    "balanced_accuracy": 0.9761,
+    "macro_precision": 0.9642,
+    "macro_recall": 0.9761,
+    "macro_f1": 0.97,
+    "weighted_f1": 0.9665
+  },
+  "classes": {
+    "0": "Potato___Early_blight",
+    "1": "Potato___Late_blight",
+    "2": "Potato___healthy"
+  },
+  "evaluation_status": "locked_test_evaluation",
+  "seed": 42
+}

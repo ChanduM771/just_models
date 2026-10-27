@@ -1,5 +1,5 @@
 """
-Shamba AI - Crop Disease Model
+AgroVision AI - Crop Disease Model
 Real ONNX inference (MobileNetV2) + Gemini Vision API fallback
 """
 

@@ -1,5 +1,5 @@
 """
-Shamba AI - FastAPI Application Entry Point
+AgroVision AI - FastAPI Application Entry Point
 Mounts frontend as static files, includes all routers, initializes DB
 """
 
@@ -14,6 +14,8 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+
+sys.path.insert(0, str(Path(__file__).parent))
 
 from config import APP_NAME, APP_VERSION
 from db.database import init_db, seed_demo_data
@@ -77,23 +79,23 @@ if FRONTEND_DIR.exists():
     # Serve specific HTML pages
     @app.get("/")
     async def serve_index():
-        return FileResponse(FRONTEND_DIR / "index.html")
+        return FileResponse(FRONTEND_DIR / "index.html", headers={"Cache-Control": "no-store"})
 
     @app.get("/result.html")
     async def serve_result():
-        return FileResponse(FRONTEND_DIR / "result.html")
+        return FileResponse(FRONTEND_DIR / "result.html", headers={"Cache-Control": "no-store"})
 
     @app.get("/admin_dashboard.html")
     async def serve_admin():
-        return FileResponse(FRONTEND_DIR / "admin_dashboard.html")
+        return FileResponse(FRONTEND_DIR / "admin_dashboard.html", headers={"Cache-Control": "no-store"})
 
     @app.get("/login.html")
     async def serve_login():
-        return FileResponse(FRONTEND_DIR / "login.html")
+        return FileResponse(FRONTEND_DIR / "login.html", headers={"Cache-Control": "no-store"})
 
     @app.get("/history.html")
     async def serve_history():
-        return FileResponse(FRONTEND_DIR / "history.html")
+        return FileResponse(FRONTEND_DIR / "history.html", headers={"Cache-Control": "no-store"})
 
 else:
     print(f"⚠️ Frontend directory not found at {FRONTEND_DIR}")
@@ -102,10 +104,14 @@ else:
 # Health check endpoint
 @app.get("/api/health")
 async def health_check():
-    from ai.model import get_model
+    from ai.agrovision import get_agrovision_registry
     from config import GEMINI_API_KEY
-    onnx_loaded = get_model().is_loaded
-    gemini_configured = bool(GEMINI_API_KEY and not GEMINI_API_KEY.startswith("AQ.Ab8RN6"))
+    agrovision = get_agrovision_registry()
+    gemini_configured = GEMINI_API_KEY not in {
+        "",
+        "your-gemini-api-key-here",
+        "local-development-placeholder",
+    }
     from db.database import get_connection
     db_ok = False
     try:
@@ -121,7 +127,8 @@ async def health_check():
         "app": APP_NAME,
         "version": APP_VERSION,
         "database": "connected" if db_ok else "disconnected",
-        "onnx_model": "loaded" if onnx_loaded else "not_found",
+        "agrovision_models": agrovision.status(),
+        "supported_crops": agrovision.supported_crops,
         "gemini_api": "configured" if gemini_configured else "not_configured"
     }
 

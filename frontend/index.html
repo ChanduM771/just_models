@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shamba AI - Detect Crop Diseases</title>
+    <title>AgroVision AI - Detect Crop Diseases</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -567,15 +567,13 @@
         <div class="header-content">
             <div class="brand">
                 <span class="brand-icon">🌿</span>
-                <span class="brand-name">Shamba AI</span>
+                <span class="brand-name">AgroVision AI</span>
             </div>
             <div class="header-links" id="headerLinks">
                 <a href="/login.html" id="loginLink" data-i18n="login">Login</a>
                 <a href="/admin_dashboard.html" data-i18n="admin">Admin</a>
                 <button style="font-family: 'Outfit', sans-serif; font-weight:600;" onclick="setLang('en')" id="btnEN"
                     class="lang-btn active">EN</button>
-                <button style="font-family: 'Outfit', sans-serif; font-weight:600;" onclick="setLang('sw')" id="btnSW"
-                    class="lang-btn">SW</button>
                 <button onclick="toggleDark()" id="darkBtn" class="dark-btn" title="Toggle dark mode">🌙</button>
             </div>
         </div>
@@ -589,23 +587,17 @@
         <!-- Crop Selection -->
         <div class="section-title"><span>🌱</span> <span data-i18n="selectCrop">Select your crop</span></div>
         <div class="crop-pills" id="cropPills">
-            <div class="crop-pill" data-crop="Maize" onclick="selectCrop(this)">
-                <span class="emoji">🌽</span> <span data-i18n="cropMaize">Maize</span>
+            <div class="crop-pill" data-crop="Corn" onclick="selectCrop(this)">
+                <span class="emoji">🌽</span> <span data-i18n="cropCorn">Corn</span>
             </div>
             <div class="crop-pill" data-crop="Tomato" onclick="selectCrop(this)">
                 <span class="emoji">🍅</span> <span data-i18n="cropTomato">Tomato</span>
             </div>
-            <div class="crop-pill" data-crop="Kale" onclick="selectCrop(this)">
-                <span class="emoji">🥬</span> <span data-i18n="cropKale">Kale</span>
-            </div>
             <div class="crop-pill" data-crop="Potato" onclick="selectCrop(this)">
                 <span class="emoji">🥔</span> <span data-i18n="cropPotato">Potato</span>
             </div>
-            <div class="crop-pill" data-crop="Onion" onclick="selectCrop(this)">
-                <span class="emoji">🧅</span> <span data-i18n="cropOnion">Onion</span>
-            </div>
-            <div class="crop-pill" data-crop="Beans" onclick="selectCrop(this)">
-                <span class="emoji">🫘</span> <span data-i18n="cropBeans">Beans</span>
+            <div class="crop-pill" data-crop="Apple" onclick="selectCrop(this)">
+                <span class="emoji">🍎</span> <span data-i18n="cropApple">Apple</span>
             </div>
         </div>
 
@@ -676,13 +668,13 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p><span data-i18n="footer">🌿 Shamba AI — Empowering Kenyan farmers with AI</span></p>
-        <p><span data-i18n="footerSub">Works on 2G/3G • No login required •</span> <a href="/admin_dashboard.html"
+        <p><span data-i18n="footer">🌿 AgroVision AI — Empowering local farmers with AI</span></p>
+        <p><span data-i18n="footerSub"> No login required •</span> <a href="/admin_dashboard.html"
                 data-i18n="adminDash">Admin Dashboard</a></p>
     </footer>
 
     <script>
-        const API_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '') && location.port !== '8001' ? 'http://localhost:8001' : '';
+        const API_BASE = '';
 
         // ===== i18n =====
         const T = {
@@ -693,37 +685,18 @@
                 uploadText: 'Tap to upload or drag & drop',
                 uploadSub: 'JPG, JPEG, PNG, WEBP — Max 5MB',
                 gallery: '📁 Gallery', camera: '📷 Camera',
-                cropMaize: 'Maize', cropTomato: 'Tomato', cropKale: 'Kale',
-                cropPotato: 'Potato', cropOnion: 'Onion', cropBeans: 'Beans',
+                cropCorn: 'Corn', cropTomato: 'Tomato', cropPotato: 'Potato', cropApple: 'Apple',
                 analyseBtn: 'Analyse Crop',
                 analysing: 'Analysing your crop...',
                 step1: 'Image uploaded', step2: 'Pre-processing image',
-                step3: 'Running CNN model', step4: 'Matching disease database',
+                step3: 'Running CNN model', step4: 'Matching disease ',
                 step5: 'Generating treatment advice',
-                footer: '🌿 Shamba AI — Empowering Kenyan farmers with AI',
+                footer: '🌿 AgroVision AI — Empowering Kenyan farmers with AI',
                 footerSub: 'Works on 2G/3G • No login required •',
                 adminDash: 'Admin Dashboard',
             },
-            sw: {
-                login: 'Ingia', admin: 'Msimamizi', myScans: 'Skani Zangu',
-                tagline: 'Gundua magonjwa ya mazao papo hapo. Okoa mavuno yako. Okoa mapato yako.',
-                selectCrop: 'Chagua zao lako', uploadImage: 'Pakia picha ya zao',
-                uploadText: 'Gonga ili kupakia au buruta & acha',
-                uploadSub: 'JPG, JPEG, PNG, WEBP — Upeo 5MB',
-                gallery: '📁 Matunzio', camera: '📷 Kamera',
-                cropMaize: 'Mahindi', cropTomato: 'Nyanya', cropKale: 'Sukuma Wiki',
-                cropPotato: 'Viazi', cropOnion: 'Kitunguu', cropBeans: 'Maharagwe',
-                analyseBtn: 'Chunguza Zao',
-                analysing: 'Inachunguza zao lako...',
-                step1: 'Picha imepakiwa', step2: 'Inasindika picha',
-                step3: 'Inaendesha mfano wa CNN', step4: 'Inalinganisha hifadhidata ya magonjwa',
-                step5: 'Inatoa ushauri wa matibabu',
-                footer: '🌿 Shamba AI — Kuwawezesha wakulima wa Kenya kwa AI',
-                footerSub: 'Inafanya kazi kwenye 2G/3G • Hakuna kuingia •',
-                adminDash: 'Dashibodi ya Msimamizi',
-            }
         };
-        let lang = localStorage.getItem('shamba_lang') || 'en';
+        let lang = 'en';
 
         // ===== Dark Mode =====
         function toggleDark() {
@@ -748,7 +721,6 @@
                 if (T[lang][k]) el.textContent = T[lang][k];
             });
             document.getElementById('btnEN').classList.toggle('active', lang === 'en');
-            document.getElementById('btnSW').classList.toggle('active', lang === 'sw');
         }
 
         function setLang(l) {

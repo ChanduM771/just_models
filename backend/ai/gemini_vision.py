@@ -169,3 +169,99 @@ def predict_gemini_vision(
     except Exception as e:
         logger.error(f"Gemini Vision failed: {e}")
         return None
+
+
+def explain_classifier_result(prediction: dict) -> dict:
+    """Turn a crop-model prediction into farmer-facing natural language."""
+    if not GEMINI_API_KEY:
+        return prediction
+
+    prompt = f"""You are a Kenyan agricultural advisor.
+The crop-specific AgroVision classifier produced this result:
+{json.dumps(prediction, ensure_ascii=True)}
+
+Use the classifier result as the diagnosis. Do not invent a different disease.
+Return only valid JSON with this exact structure:
+{{
+  "display": "short natural diagnosis name",
+  "severity": "Low/Medium/High/Critical",
+  "cause_type": "fungal/bacterial/viral/pest/physiological/unknown",
+  "brief_explanation": "one clear sentence for a farmer",
+  "advice_summary": "one short practical treatment or next-step sentence"
+}}
+Keep the diagnosis faithful to the classifier and use simple English."""
+
+    try:
+        url = (
+            f"https://generativelanguage.googleapis.com/v1beta/models/"
+            f"{GEMINI_MODEL}:generateContent?key={GEMINI_API_KEY}"
+        )
+        response = requests.post(
+            url,
+            json={
+                "contents": [{"parts": [{"text": prompt}]}],
+                "generationConfig": {"temperature": 0.2, "maxOutputTokens": 250},
+            },
+            timeout=15,
+        )
+        if response.status_code != 200:
+            logger.warning("Gemini explanation error: %s", response.status_code)
+            return prediction
+
+        text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
+        if "```" in text:
+            text = text.split("```json")[-1].split("```")[0]
+        explanation = json.loads(text.strip())
+        allowed = {"display", "severity", "cause_type", "brief_explanation", "advice_summary"}
+        return {**prediction, **{key: explanation[key] for key in explanation if key in allowed}}
+    except (KeyError, ValueError, requests.RequestException) as exc:
+        logger.warning("Gemini explanation failed: %s", exc)
+        return prediction
+
+
+def verify_selected_crop(image_bytes: bytes, crop_type: str, mime_type: str = "image/jpeg") -> bool | None:
+    """Verify that an uploaded image matches the crop selected by the user."""
+    if not GEMINI_API_KEY:
+        return None
+
+    prompt = f"""Inspect this plant image and verify the user's selected crop.
+Selected crop: {crop_type}
+
+Return only valid JSON in this exact format:
+{{"matches_selected_crop": true, "observed_crop": "Tomato"}}
+
+Set matches_selected_crop to false if the image is another crop, not a plant,
+or does not contain enough visible evidence to verify the selected crop.
+Use one of: Apple, Corn, Potato, Tomato, Unknown."""
+
+    try:
+        b64_image = base64.b64encode(image_bytes).decode("utf-8")
+        url = (
+            f"https://generativelanguage.googleapis.com/v1beta/models/"
+            f"{GEMINI_MODEL}:generateContent?key={GEMINI_API_KEY}"
+        )
+        response = requests.post(
+            url,
+            json={
+                "contents": [{
+                    "parts": [
+                        {"text": prompt},
+                        {"inline_data": {"mime_type": mime_type, "data": b64_image}},
+                    ]
+                }],
+                "generationConfig": {"temperature": 0, "maxOutputTokens": 80},
+            },
+            timeout=15,
+        )
+        if response.status_code != 200:
+            logger.warning("Crop verification error: %s", response.status_code)
+            return None
+
+        text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
+        if "```" in text:
+            text = text.split("```json")[-1].split("```")[0]
+        result = json.loads(text.strip())
+        return bool(result["matches_selected_crop"])
+    except (KeyError, ValueError, requests.RequestException) as exc:
+        logger.warning("Crop verification failed: %s", exc)
+        return None

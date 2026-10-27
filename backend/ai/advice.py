@@ -1,5 +1,5 @@
 """
-Shamba AI - Disease Advice Module
+AgroVision AI - Disease Advice Module
 Looks up disease_advice.json and returns treatment steps, products, etc.
 """
 

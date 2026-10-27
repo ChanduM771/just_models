@@ -1,5 +1,5 @@
 """
-Shamba AI - Authentication Utilities
+AgroVision AI - Authentication Utilities
 PBKDF2 password hashing, JWT creation/verification
 """
 import hashlib
@@ -83,3 +83,26 @@ def extract_token_from_header(authorization: str) -> Optional[str]:
     if len(parts) == 2 and parts[0].lower() == "bearer":
         return parts[1]
     return None
+
+
+def get_active_user(authorization: str) -> dict:
+    """Validate a token against the current database user and ban status."""
+    from fastapi import HTTPException
+    from db.database import get_connection
+
+    token = extract_token_from_header(authorization)
+    payload = verify_jwt(token) if token else None
+    if not payload or not payload.get("user_id"):
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+    conn = get_connection()
+    row = conn.execute(
+        "SELECT id, is_admin, is_banned FROM users WHERE id = ?",
+        (payload["user_id"],),
+    ).fetchone()
+    conn.close()
+    if not row:
+        raise HTTPException(status_code=401, detail="User not found")
+    if row["is_banned"]:
+        raise HTTPException(status_code=403, detail="Account is banned")
+    return {"user_id": row["id"], "is_admin": bool(row["is_admin"])}

@@ -1,5 +1,5 @@
 """
-Shamba AI - /api/chat endpoint
+AgroVision AI - /api/chat endpoint
 Sends farmer's question + diagnosis context to Gemini and returns a reply.
 """
 
@@ -12,27 +12,10 @@ import json
 
 from config import GEMINI_API_KEY, GEMINI_MODEL
 from db.database import get_connection
-from utils.auth_utils import verify_jwt, extract_token_from_header
+from utils.auth_utils import get_active_user
 
 router = APIRouter()
 
-
-# ---------------------------------------------------------------------------
-# DB migration — add preview_urls column if missing
-# ---------------------------------------------------------------------------
-def _ensure_preview_urls_column():
-    try:
-        conn = get_connection()
-        conn.execute(
-            "ALTER TABLE chat_messages ADD COLUMN preview_urls TEXT DEFAULT NULL"
-        )
-        conn.commit()
-        conn.close()
-    except Exception:
-        pass  # column already exists
-
-
-_ensure_preview_urls_column()
 
 # ---------------------------------------------------------------------------
 # Image search helpers
@@ -143,7 +126,7 @@ def _build_google_img_block(query: str, lang: str) -> dict:
 
     query_encoded = urllib.parse.quote_plus(query)
     google_link = f"https://www.google.com/search?tbm=isch&q={query_encoded}"
-    label = "Angalia picha kwenye Google" if lang == "sw" else "Search Google Images"
+    label = "Google ಚಿತ್ರಗಳನ್ನು ಹುಡುಕಿ" if lang == "kn" else "Search Google Images"
 
     preview_urls: list[str] = []
     try:
@@ -179,23 +162,19 @@ class ChatRequest(BaseModel):
 _ERR_QUOTA = {
     "en": "Sorry, our AI is currently receiving too many requests. Please try again in a few minutes.",
     "sw": "Samahani, AI yetu inapokea maombi mengi sana sasa hivi. Tafadhali jaribu tena baadaye.",
+    "kn": "ಕ್ಷಮಿಸಿ, ನಮ್ಮ AI ಗೆ ಈಗ ತುಂಬಾ ವಿನಂತಿಗಳು ಬರುತ್ತಿವೆ. ದಯವಿಟ್ಟು ಕೆಲವು ನಿಮಿಷಗಳ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
 }
 _ERR_NETWORK = {
     "en": "Sorry, I couldn't reach the AI right now. Please try again shortly.",
     "sw": "Samahani, sikuweza kufikia AI sasa hivi. Tafadhali jaribu tena baadaye.",
+    "kn": "ಕ್ಷಮಿಸಿ, ಈಗ AI ಅನ್ನು ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
 }
 
 
 def get_optional_user(authorization: str = None):
     if not authorization:
         return None
-    token = extract_token_from_header(authorization)
-    if not token:
-        return None
-    payload = verify_jwt(token)
-    if not payload:
-        return None
-    return payload.get("user_id")
+    return get_active_user(authorization)["user_id"]
 
 
 @router.post("/api/chat")
@@ -203,6 +182,17 @@ async def chat(req: ChatRequest, authorization: Optional[str] = Header(None)):
     user_id = get_optional_user(authorization)
     lang = req.lang or "en"
     wants_img = _wants_image(req.message)
+
+    if user_id and req.detection_id:
+        conn = get_connection()
+        owned = conn.execute(
+            "SELECT 1 FROM detections WHERE id = ? AND user_id = ?",
+            (req.detection_id, user_id),
+        ).fetchone()
+        conn.close()
+        if not owned:
+            from fastapi import HTTPException
+            raise HTTPException(status_code=403, detail="Detection does not belong to this user")
 
     # Save user message to DB
     if user_id and req.detection_id:
@@ -219,7 +209,8 @@ async def chat(req: ChatRequest, authorization: Optional[str] = Header(None)):
 
     # Build Gemini contents array
     # Inject image-system note into context when user wants images
-    lang_instruction = f" CRITICAL INSTRUCTION: You MUST reply entirely in {'Swahili' if lang == 'sw' else 'English'}. Ignore the language of the diagnosis context if it differs."
+    language_name = {"kn": "Kannada"}.get(lang, "English")
+    lang_instruction = f" CRITICAL INSTRUCTION: You MUST reply entirely in {language_name}. Ignore the language of the diagnosis context if it differs."
     context_text = (
         (_IMG_SYSTEM_NOTE if wants_img else "") + req.context + lang_instruction
     )

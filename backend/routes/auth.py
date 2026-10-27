@@ -1,5 +1,5 @@
 """
-Shamba AI - Authentication Routes
+AgroVision AI - Authentication Routes
 POST /api/auth/register, POST /api/auth/login, GET /api/auth/me
 """
 from fastapi import APIRouter, HTTPException, Depends, Header
@@ -7,7 +7,14 @@ from pydantic import BaseModel
 from typing import Optional
 
 from db.database import get_connection
-from utils.auth_utils import hash_password, verify_password, create_jwt, verify_jwt, extract_token_from_header
+from utils.auth_utils import (
+    create_jwt,
+    extract_token_from_header,
+    get_active_user,
+    hash_password,
+    verify_jwt,
+    verify_password,
+)
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
@@ -45,15 +52,7 @@ def get_user_from_token(authorization: str = Header(None)):
     if not authorization:
         raise HTTPException(status_code=401, detail="Authorization header required")
     
-    token = extract_token_from_header(authorization)
-    if not token:
-        raise HTTPException(status_code=401, detail="Invalid authorization header format")
-    
-    payload = verify_jwt(token)
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
-    
-    return payload
+    return get_active_user(authorization)
 
 
 # --- Routes ---

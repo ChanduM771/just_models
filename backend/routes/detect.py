@@ -1,10 +1,11 @@
 """
-Shamba AI - Detection Routes
+AgroVision AI - Detection Routes
 POST /api/detect - Accept image + crop type, return disease prediction
 """
 
 import os
 import json
+import uuid
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Depends, Header
 from typing import Optional
 
@@ -21,15 +22,8 @@ def get_optional_user(authorization: str = None):
     """Get user ID from token if provided, otherwise return None (anonymous)."""
     if not authorization:
         return None
-    from utils.auth_utils import extract_token_from_header, verify_jwt
-
-    token = extract_token_from_header(authorization)
-    if not token:
-        return None
-    payload = verify_jwt(token)
-    if not payload:
-        return None
-    return payload.get("user_id")
+    from utils.auth_utils import get_active_user
+    return get_active_user(authorization)["user_id"]
 
 
 @router.post("/detect")
@@ -59,6 +53,12 @@ async def detect_disease(
 
     # Run prediction
     prediction = predict_disease(image_bytes, crop_type, mime_type=mime_type)
+    if prediction.get("unsupported"):
+        raise HTTPException(status_code=400, detail=prediction["message"])
+    if prediction.get("crop_mismatch"):
+        raise HTTPException(status_code=400, detail=prediction["message"])
+    if prediction.get("verification_unavailable"):
+        raise HTTPException(status_code=503, detail=prediction["message"])
 
     # Get advice for the predicted disease
     gemini_meta = (
@@ -80,9 +80,8 @@ async def detect_disease(
     image_path = None
     try:
         os.makedirs(UPLOAD_DIR, exist_ok=True)
-        import time
-
-        filename = f"{int(time.time())}_{image.filename}"
+        extension = os.path.splitext(image.filename or "")[1].lower() or ".jpg"
+        filename = f"{uuid.uuid4().hex}{extension}"
         filepath = os.path.join(UPLOAD_DIR, filename)
         with open(filepath, "wb") as f:
             f.write(image_bytes)
@@ -122,6 +121,10 @@ async def detect_disease(
         "disease": prediction["display"],
         "disease_name": prediction["class_name"],
         "confidence": prediction["confidence"],
+        "source": prediction.get("source", "agrovision"),
+        "model": prediction.get("model"),
+        "brief_explanation": prediction.get("brief_explanation", ""),
+        "advice_summary": prediction.get("advice_summary", ""),
         "crop": prediction["crop"],
         "emoji": prediction["emoji"],
         "severity": advice["severity"],

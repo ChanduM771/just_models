@@ -1,5 +1,5 @@
 """
-Shamba AI - Admin Routes
+AgroVision AI - Admin Routes
 Dashboard stats, user management, disease CRUD operations
 """
 import json
@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from typing import Optional, List
 
 from db.database import get_connection
-from utils.auth_utils import verify_jwt, extract_token_from_header
+from utils.auth_utils import get_active_user
 
 router = APIRouter(prefix="/api/admin", tags=["Admin"])
 
@@ -42,15 +42,8 @@ def require_admin(authorization: str = Header(None)):
     if not authorization:
         raise HTTPException(status_code=401, detail="Authorization header required")
     
-    token = extract_token_from_header(authorization)
-    if not token:
-        raise HTTPException(status_code=401, detail="Invalid authorization header")
-    
-    payload = verify_jwt(token)
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
-    
-    if not payload.get("is_admin"):
+    payload = get_active_user(authorization)
+    if not payload["is_admin"]:
         raise HTTPException(status_code=403, detail="Admin access required")
     
     return payload

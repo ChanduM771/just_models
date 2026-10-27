@@ -10,7 +10,7 @@
 
   <rect x="0" y="0" width="1200" height="920" fill="#FAF6EE"/>
 
-  <text x="600" y="38" text-anchor="middle" font-size="24" font-weight="bold" fill="#2B2B26">Shamba AI &#8212; System Architecture</text>
+  <text x="600" y="38" text-anchor="middle" font-size="24" font-weight="bold" fill="#2B2B26">AgroVision AI &#8212; System Architecture</text>
   <text x="600" y="60" text-anchor="middle" font-size="13" fill="#6b6558" font-style="italic">Three-tier architecture with a smart image-processing &amp; disease-detection pipeline</text>
 
   <!-- TIER 1: PRESENTATION -->

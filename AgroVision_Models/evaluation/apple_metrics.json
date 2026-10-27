@@ -1,0 +1,22 @@
+{
+  "crop": "Apple",
+  "model": "AgroVision_Apple_EfficientNetB0",
+  "architecture": "EfficientNetB0",
+  "input_size": [
+    224,
+    224
+  ],
+  "num_classes": 6,
+  "test_set": {
+    "samples": 559,
+    "accuracy": 0.9266547406082289,
+    "balanced_accuracy": 0.8723871144639185,
+    "macro_precision": 0.8303633714682239,
+    "macro_recall": 0.8723871144639185,
+    "macro_f1": 0.8435651421635404,
+    "weighted_f1": 0.9312415260677113
+  },
+  "evaluation_status": "locked_test_evaluation",
+  "selected_stage": "Stage 3",
+  "seed": 42
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shamba AI - Diagnosis Result</title>
+    <title>AgroVision AI - Diagnosis Result</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -1458,7 +1458,7 @@
             <a href="/" class="back-btn">← <span data-i18n="back">Back</span></a>
             <div class="brand">
                 <span class="brand-icon">🌿</span>
-                <span class="brand-name">Shamba AI</span>
+                <span class="brand-name">AgroVision AI</span>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
                 <a href="/history.html" id="historyNavBtn"
@@ -1466,7 +1466,7 @@
                     History</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
-                    <button class="lang-btn" id="btnSW" onclick="setLang('sw')">SW</button>
+                    <button class="lang-btn" id="btnKN" onclick="setLang('kn')">KN</button>
                 </div><button onclick="toggleDark()" id="darkBtn" title="Toggle dark mode" class="dark-btn">🌙</button>
             </div>
         </div>
@@ -1484,7 +1484,7 @@
     </main>
 
     <footer class="footer">
-        <p>🌿 Shamba AI &mdash; <span data-i18n="footer">Empowering Kenyan farmers with AI</span></p>
+        <p>🌿 AgroVision AI &mdash; <span data-i18n="footer">Empowering Kenyan farmers with AI</span></p>
     </footer>
 
     <!-- AI Chat FAB -->
@@ -1498,7 +1498,7 @@
         <div class="chat-head">
             <div class="chat-head-avatar">🌿</div>
             <div class="chat-head-info">
-                <div class="chat-head-title" data-i18n="chatTit">Shamba AI Assistant</div>
+                <div class="chat-head-title" data-i18n="chatTit">AgroVision AI Assistant</div>
                 <div class="chat-head-sub" data-i18n="chatSub">Ask about your crop result</div>
             </div>
             <button class="chat-close" onclick="toggleChat()">✕</button>
@@ -1534,7 +1534,7 @@
         // ===== i18n UI labels =====
         const T = {
             en: {
-                chatTit: 'Shamba AI Assistant',
+                chatTit: 'AgroVision AI Assistant',
 
                 back: 'Back', noResult: 'No diagnosis result found', noResultSub: 'Go back and scan a crop image to get a diagnosis',
                 scanCrop: 'Scan a Crop', footer: 'Empowering Kenyan farmers with AI', chatSub: 'Ask about your crop result',
@@ -1548,27 +1548,27 @@
                 kalroBody: 'For expert advice contact your local agricultural extension officer or call the KALRO hotline:\n\n📱 KALRO: +254 700 000 000',
                 chatBtn: '💬 Chat with AI'
             },
-            sw: {
-                chatTit: 'Msaidizi wa Shamba AI',
+            kn: {
+                chatTit: 'AgroVision AI ಸಹಾಯಕ',
 
-                back: 'Rudi', noResult: 'Hakuna matokeo ya uchunguzi', noResultSub: 'Rudi na upige picha ya mazao kupata uchunguzi',
-                scanCrop: 'Piga Picha ya Zao', footer: 'Kuwawezesha wakulima wa Kenya kwa AI', chatSub: 'Uliza kuhusu matokeo yako',
-                confidence: 'Kiwango cha Uhakika', severity: 'Ukali', symptoms: '🩺 Dalili',
-                treatment: '💊 Hatua za Matibabu', products: '🏪 Bidhaa Zinazopendekezwa', prevention: '🛡️ Vidokezo vya Kuzuia',
-                savePDF: '📄 Hifadhi PDF', expertBtn: '📞 Uliza Mtaalamu', newScan: '🔄 Piga Picha Nyingine',
-                affectedCrop: 'Zao lililoathiriwa', translating: 'Inatafsiri kwa Kiswahili...',
-                chatWelcome: 'Habari! Nimechunguza picha yako. Niulize chochote kuhusu ugonjwa, matibabu au kuzuia.',
-                qTreat: 'Nitaalajiaje?', qPrevent: 'Ninazuiaje?', qProducts: 'Bidhaa zipi nitumie?', qSwahili: 'Tell me in English',
-                kalroTitle: 'Ushauri wa Mtaalamu', kalroClose: 'Funga', kalroCall: 'Piga Simu KALRO',
-                kalroBody: 'Kwa ushauri wa kitaalamu wasiliana na afisa kilimo wa eneo lako au piga simu KALRO:\n\n📱 KALRO: +254 700 000 000',
-                chatBtn: '💬 Piga Soga na AI'
+                back: 'ಹಿಂದೆ', noResult: 'ರೋಗನಿರ್ಣಯದ ಫಲಿತಾಂಶ ಕಂಡುಬಂದಿಲ್ಲ', noResultSub: 'ರೋಗನಿರ್ಣಯ ಪಡೆಯಲು ಹಿಂದಿರುಗಿ ಬೆಳೆಯ ಚಿತ್ರವನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ',
+                scanCrop: 'ಬೆಳೆಯನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ', footer: 'AI ಮೂಲಕ ರೈತರಿಗೆ ನೆರವು', chatSub: 'ನಿಮ್ಮ ಬೆಳೆಯ ಫಲಿತಾಂಶದ ಬಗ್ಗೆ ಕೇಳಿ',
+                confidence: 'ವಿಶ್ವಾಸದ ಮಟ್ಟ', severity: 'ತೀವ್ರತೆ', symptoms: '🩺 ಲಕ್ಷಣಗಳು',
+                treatment: '💊 ಚಿಕಿತ್ಸೆಯ ಹಂತಗಳು', products: '🏪 ಶಿಫಾರಸು ಮಾಡಿದ ಉತ್ಪನ್ನಗಳು', prevention: '🛡️ ತಡೆಗಟ್ಟುವ ಸಲಹೆಗಳು',
+                savePDF: '📄 PDF ಉಳಿಸಿ', expertBtn: '📞 ತಜ್ಞರನ್ನು ಕೇಳಿ', newScan: '🔄 ಮತ್ತೊಂದು ಬೆಳೆಯನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ',
+                affectedCrop: 'ಪೀಡಿತ ಬೆಳೆ', translating: 'ಕನ್ನಡಕ್ಕೆ ಅನುವಾದಿಸಲಾಗುತ್ತಿದೆ...',
+                chatWelcome: 'ನಮಸ್ಕಾರ! ನಿಮ್ಮ ಸ್ಕ್ಯಾನ್ ಅನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗಿದೆ. ರೋಗನಿರ್ಣಯ, ಚಿಕಿತ್ಸೆ ಅಥವಾ ತಡೆಗಟ್ಟುವಿಕೆಯ ಬಗ್ಗೆ ಏನಾದರೂ ಕೇಳಿ.',
+                qTreat: 'ಇದಕ್ಕೆ ಹೇಗೆ ಚಿಕಿತ್ಸೆ ನೀಡುವುದು?', qPrevent: 'ಇದನ್ನು ಹೇಗೆ ತಡೆಯುವುದು?', qProducts: 'ಯಾವ ಉತ್ಪನ್ನಗಳನ್ನು ಬಳಸಬೇಕು?', qSwahili: 'ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ತಿಳಿಸಿ',
+                kalroTitle: 'ತಜ್ಞರ ಸಮಾಲೋಚನೆ', kalroClose: 'ಮುಚ್ಚಿ', kalroCall: 'KALRO ಗೆ ಕರೆ ಮಾಡಿ',
+                kalroBody: 'ತಜ್ಞರ ಸಲಹೆಗಾಗಿ ನಿಮ್ಮ ಸ್ಥಳೀಯ ಕೃಷಿ ವಿಸ್ತರಣಾಧಿಕಾರಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ ಅಥವಾ KALRO ಸಹಾಯವಾಣಿಗೆ ಕರೆ ಮಾಡಿ:\n\n📱 KALRO: +254 700 000 000',
+                chatBtn: '💬 AI ಜೊತೆ ಚಾಟ್ ಮಾಡಿ'
             }
         };
-        let lang = localStorage.getItem('shamba_lang') || 'en';
+        let lang = localStorage.getItem('shamba_lang') === 'sw' ? 'kn' : (localStorage.getItem('shamba_lang') || 'en');
         function t(k) { return T[lang][k] || T.en[k] || k; }
 
-        // ===== Swahili data cache =====
-        let swData = null;
+        // ===== Kannada data cache =====
+        let knData = null;
 
         // (Load result logic moved to bottom of script to prevent temporal dead zone)
 
@@ -1577,20 +1577,20 @@
             lang = l;
             localStorage.setItem('shamba_lang', l);
             document.getElementById('btnEN').classList.toggle('active', l === 'en');
-            document.getElementById('btnSW').classList.toggle('active', l === 'sw');
+            document.getElementById('btnKN').classList.toggle('active', l === 'kn');
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const k = el.getAttribute('data-i18n');
                 if (T[l][k]) el.textContent = T[l][k];
             });
             if (!window._resultData) return;
-            if (l === 'sw') {
-                if (swData) {
-                    renderResult(swData, window._imageData);
+            if (l === 'kn') {
+                if (knData) {
+                    renderResult(knData, window._imageData);
                 } else {
                     showTranslating(true);
-                    swData = await fetchSwahiliData(window._resultData);
+                    knData = await fetchKannadaData(window._resultData);
                     showTranslating(false);
-                    renderResult(swData, window._imageData);
+                    renderResult(knData, window._imageData);
                 }
             } else {
                 renderResult(window._resultData, window._imageData);
@@ -1610,11 +1610,11 @@
             } else { if (el) el.remove(); }
         }
 
-        async function fetchSwahiliData(data) {
-            const sw = JSON.parse(JSON.stringify(data));
+        async function fetchKannadaData(data) {
+            const kn = JSON.parse(JSON.stringify(data));
             // Strip hardcoded English disclaimer appended by backend
-            if (Array.isArray(sw.symptoms)) {
-                sw.symptoms = sw.symptoms.filter(s => !/consult.*agronomist/i.test(s));
+            if (Array.isArray(kn.symptoms)) {
+                kn.symptoms = kn.symptoms.filter(s => !/consult.*agronomist/i.test(s));
             }
             const inputObj = {
                 disease: data.disease || data.display || '',
@@ -1626,25 +1626,25 @@
                 products_availability: (data.products || []).map(p => p.availability || ''),
                 prevention: data.prevention || []
             };
-            const prompt = `Translate this crop disease diagnosis to natural, simple Swahili for Kenyan farmers.\nReturn ONLY compact valid JSON — no markdown, no explanation.\nKeep product names (e.g. "Mancozeb 80WP"), scientific names in English.\nPreserve all JSON keys exactly. Only translate string values.\n\nInput:\n${JSON.stringify(inputObj)}`;
+            const prompt = `Translate this crop disease diagnosis to natural, simple Kannada for farmers.\nReturn ONLY compact valid JSON — no markdown, no explanation.\nKeep product names (e.g. "Mancozeb 80WP"), scientific names in English.\nPreserve all JSON keys exactly. Only translate string values.\n\nInput:\n${JSON.stringify(inputObj)}`;
             try {
                 const res = await fetch(API_BASE + '/api/chat', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: prompt, context: 'You are a JSON-only Swahili translator. Output raw JSON only, no markdown, no code fences.', history: [], lang: 'sw' })
+                    body: JSON.stringify({ message: prompt, context: 'You are a JSON-only Kannada translator. Output raw JSON only, no markdown, no code fences.', history: [], lang: 'kn' })
                 });
                 if (!res.ok) throw new Error();
                 const json = await res.json();
                 const raw = (json.reply || '').replace(/```json|```/g, '').trim();
                 const parsed = JSON.parse(raw);
-                if (parsed.disease) sw.disease = parsed.disease;
-                if (parsed.crop) sw.crop = parsed.crop;
-                if (parsed.severity) sw.severity = parsed.severity;
-                if (parsed.symptoms) sw.symptoms = parsed.symptoms;
-                if (parsed.treatment_steps) sw.treatment_steps = sw.treatment_steps.map((step, i) => ({ ...step, text: parsed.treatment_steps[i] || step.text }));
-                if (parsed.products_types && sw.products) sw.products = sw.products.map((p, i) => ({ ...p, type: parsed.products_types[i] || p.type }));
-                if (parsed.products_availability && sw.products) sw.products = sw.products.map((p, i) => ({ ...p, availability: parsed.products_availability[i] ?? p.availability }));
-                if (parsed.prevention) sw.prevention = parsed.prevention;
-                return sw;
+                if (parsed.disease) kn.disease = parsed.disease;
+                if (parsed.crop) kn.crop = parsed.crop;
+                if (parsed.severity) kn.severity = parsed.severity;
+                if (parsed.symptoms) kn.symptoms = parsed.symptoms;
+                if (parsed.treatment_steps) kn.treatment_steps = kn.treatment_steps.map((step, i) => ({ ...step, text: parsed.treatment_steps[i] || step.text }));
+                if (parsed.products_types && kn.products) kn.products = kn.products.map((p, i) => ({ ...p, type: parsed.products_types[i] || p.type }));
+                if (parsed.products_availability && kn.products) kn.products = kn.products.map((p, i) => ({ ...p, availability: parsed.products_availability[i] ?? p.availability }));
+                if (parsed.prevention) kn.prevention = parsed.prevention;
+                return kn;
             } catch { return data; }
         }
 
@@ -1774,11 +1774,11 @@
                 ? resultContext.products[0].name
                 : null;
             const imgQuery = firstProduct
-                ? (lang === 'sw' ? `Nionyeshe picha ya ${firstProduct}` : `Show me image of ${firstProduct}`)
-                : (lang === 'sw' ? 'Nionyeshe picha ya dawa' : 'Show me image of the medicine');
+                ? (lang === 'kn' ? `${firstProduct} ನ ಚಿತ್ರವನ್ನು ತೋರಿಸಿ` : `Show me image of ${firstProduct}`)
+                : (lang === 'kn' ? 'ಔಷಧಿಯ ಚಿತ್ರವನ್ನು ತೋರಿಸಿ' : 'Show me image of the medicine');
             const imgLabel = firstProduct
                 ? `\uD83D\uDDBC\uFE0F ${firstProduct}`
-                : (lang === 'sw' ? '\uD83D\uDDBC\uFE0F Picha ya dawa' : '\uD83D\uDDBC\uFE0F Medicine image');
+                : (lang === 'kn' ? '\uD83D\uDDBC\uFE0F ಔಷಧಿಯ ಚಿತ್ರ' : '\uD83D\uDDBC\uFE0F Medicine image');
             html += `<button class="chat-chip chat-chip--img" onclick="quickSend('${imgQuery.replace(/'/g, "&#39;")}')">${imgLabel}</button>`;
 
             document.getElementById('chatQuick').innerHTML = html;
@@ -1933,7 +1933,7 @@
             showTyping();
             const ctx = resultContext;
             const ctxText = `Disease:${ctx.disease || ''}, Crop:${ctx.crop || ''}, Confidence:${ctx.confidence}%, Severity:${ctx.severity || ''}, Symptoms:${(ctx.symptoms || []).join(', ')}, Treatment:${(ctx.treatment_steps || []).map(s => s.text).join('; ')}, Products:${(ctx.products || []).map(p => p.name).join(', ')}, Prevention:${(ctx.prevention || []).join('; ')}`;
-            const sysPrompt = `You are Shamba AI, an agricultural assistant for Kenyan farmers. Diagnosis: ${ctxText}. Be concise (under 120 words), practical, friendly. Reply in the same language the farmer uses.`;
+            const sysPrompt = `You are AgroVision AI, an agricultural assistant for Kenyan farmers. Diagnosis: ${ctxText}. Be concise (under 120 words), practical, friendly. Reply in the same language the farmer uses.`;
             try {
                 const token = localStorage.getItem('shamba_token');
                 const headers = { 'Content-Type': 'application/json' };
@@ -1969,11 +1969,11 @@
 
         function buildFallback(msg, ctx) {
             const q = msg.toLowerCase();
-            const sw = /niambie|jinsi|ugonjwa|dalili|matibabu|bidhaa|kuzuia|hatua/i.test(q);
-            if (/treat|matibabu|tibu|aala/i.test(q)) { const s = (ctx.treatment_steps || []).map((x, i) => `${i + 1}. ${x.text}`).join(' '); return sw ? `Hatua za matibabu: ${s || 'Wasiliana na afisa kilimo.'}` : `Treatment: ${s || 'Contact local agricultural officer.'}`; }
-            if (/prevent|kuzuia|epuka/i.test(q)) { const s = (ctx.prevention || []).slice(0, 3).join('. '); return sw ? `Kuzuia: ${s || 'Dumisha usafi wa shamba.'}` : `Prevention: ${s || 'Maintain good field hygiene.'}`; }
-            if (/product|bidhaa|dawa|spray/i.test(q)) { const s = (ctx.products || []).map(p => p.name).join(', '); return sw ? `Bidhaa: ${s || 'Tafuta duka la kilimo.'}` : `Products: ${s || 'Visit local agrovet.'}`; }
-            if (/swahili|kiswahili/i.test(q)) return `Ugonjwa: ${ctx.disease || '?'}. Ukali: ${ctx.severity || '?'}. Uhakika: ${ctx.confidence}%.`;
+            const kn = /ಕನ್ನಡ|ಹೇಗೆ|ರೋಗ|ಲಕ್ಷಣ|ಚಿಕಿತ್ಸೆ|ಉತ್ಪನ್ನ|ತಡೆಗಟ್ಟುವಿಕೆ|ಹಂತ/i.test(q);
+            if (/treat|ಚಿಕಿತ್ಸೆ/i.test(q)) { const s = (ctx.treatment_steps || []).map((x, i) => `${i + 1}. ${x.text}`).join(' '); return kn ? `ಚಿಕಿತ್ಸೆಯ ಹಂತಗಳು: ${s || 'ಸ್ಥಳೀಯ ಕೃಷಿ ಅಧಿಕಾರಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.'}` : `Treatment: ${s || 'Contact local agricultural officer.'}`; }
+            if (/prevent|ತಡೆ|ತಡೆಯುವುದು/i.test(q)) { const s = (ctx.prevention || []).slice(0, 3).join('. '); return kn ? `ತಡೆಗಟ್ಟುವಿಕೆ: ${s || 'ಹೊಲದ ಸ್ವಚ್ಛತೆಯನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಿ.'}` : `Prevention: ${s || 'Maintain good field hygiene.'}`; }
+            if (/product|ಉತ್ಪನ್ನ|ಔಷಧಿ|ಸ್ಪ್ರೇ/i.test(q)) { const s = (ctx.products || []).map(p => p.name).join(', '); return kn ? `ಉತ್ಪನ್ನಗಳು: ${s || 'ಸ್ಥಳೀಯ ಕೃಷಿ ಅಂಗಡಿಗೆ ಭೇಟಿ ನೀಡಿ.'}` : `Products: ${s || 'Visit local agrovet.'}`; }
+            if (/kannada|ಕನ್ನಡ/i.test(q)) return `ರೋಗ: ${ctx.disease || '?'}. ತೀವ್ರತೆ: ${ctx.severity || '?'}. ವಿಶ್ವಾಸ: ${ctx.confidence}%.`;
             return `Detected: ${ctx.disease || 'Unknown'} (${ctx.confidence}% confidence). Ask about treatment, products or prevention.`;
         }
 
@@ -1992,13 +1992,13 @@
             window._imageData = imageData;
             // Restore saved language (renders in correct lang immediately)
             document.getElementById('btnEN').classList.toggle('active', lang === 'en');
-            document.getElementById('btnSW').classList.toggle('active', lang === 'sw');
+            document.getElementById('btnKN').classList.toggle('active', lang === 'kn');
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const k = el.getAttribute('data-i18n');
                 if (T[lang][k]) el.textContent = T[lang][k];
             });
-            if (lang === 'sw') {
-                setLang('sw');
+            if (lang === 'kn') {
+                setLang('kn');
             } else {
                 renderResult(window._resultData, imageData);
             }

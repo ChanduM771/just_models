@@ -1,5 +1,5 @@
 """
-Shamba AI - Database initialization and seeding.
+AgroVision AI - Database initialization and seeding.
 Uses raw SQLite with row_factory for dict-like rows.
 All open() calls use encoding="utf-8" for Windows cp1252 compatibility.
 """
@@ -9,7 +9,7 @@ import os
 import sqlite3
 import logging
 
-from config import DATABASE_URL
+from config import ADMIN_EMAIL, ADMIN_PASSWORD, DATABASE_URL
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +18,8 @@ logger = logging.getLogger(__name__)
 _DB_PATH = DATABASE_URL.replace("sqlite:///", "").replace("sqlite://", "")
 if not _DB_PATH:
     _DB_PATH = "shamba.db"
+_DB_PATH = os.path.abspath(os.path.expanduser(_DB_PATH))
+os.makedirs(os.path.dirname(_DB_PATH), exist_ok=True)
 
 
 def get_connection() -> sqlite3.Connection:
@@ -88,21 +90,27 @@ def init_db():
             role TEXT NOT NULL,
             content TEXT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            preview_urls TEXT DEFAULT NULL,
             FOREIGN KEY (user_id) REFERENCES users(id),
             FOREIGN KEY (detection_id) REFERENCES detections(id)
         )
     """)
 
-    # Create default admin user if not exists (password: admin123)
+    cursor.execute("PRAGMA table_info(chat_messages)")
+    chat_columns = {row[1] for row in cursor.fetchall()}
+    if "preview_urls" not in chat_columns:
+        cursor.execute("ALTER TABLE chat_messages ADD COLUMN preview_urls TEXT DEFAULT NULL")
+
+    # Create the configured development admin if no admin exists.
     cursor.execute("SELECT id FROM users WHERE is_admin = 1 LIMIT 1")
     if not cursor.fetchone():
         from utils.auth_utils import hash_password
-        admin_hash = hash_password("admin123")
+        admin_hash = hash_password(ADMIN_PASSWORD)
         cursor.execute(
             "INSERT INTO users (name, email, password_hash, is_admin) VALUES (?, ?, ?, 1)",
-            ("Admin", "admin@shamba.ai", admin_hash),
+            ("Admin", ADMIN_EMAIL, admin_hash),
         )
-        logger.info("[DB] Default admin created: admin@shamba.ai / admin123")
+        logger.info("[DB] Admin account created for %s", ADMIN_EMAIL)
 
     conn.commit()
     conn.close()

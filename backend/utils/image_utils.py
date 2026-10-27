@@ -1,5 +1,5 @@
 """
-Shamba AI - Image Utilities
+AgroVision AI - Image Utilities
 Image validation, resize, base64 handling
 """
 import os
